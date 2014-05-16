@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 'use strict';
 
 var fs = require('fs');
 
-var scrape = require('../lib/scrape_oikotie');
+var scrape = require('../lib/scrape_oikotie').scrape;
 
 
 tests();
