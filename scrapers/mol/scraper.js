@@ -26,7 +26,7 @@ function scrape(data) {
         title: parts[0],
         description: $('h3').next().text().trim(),
         link: '', // TODO
-        company: parts[1],
+        company: parts[1].trim(),
         gid: 'mol' + $('#ilmoitusnumero').text(),
         contact: $('#yhteystiedot').text(),
         address: $('#tyopaikanOsoite').text(),
