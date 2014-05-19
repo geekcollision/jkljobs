@@ -29,7 +29,7 @@ function scrape(data) {
     return {
         title: parts[0],
         description: $('h3').next().text().trim(),
-        company: parts[1].trim(),
+        company: getCompany(parts),
         gid: 'mol' + $('#ilmoitusnumero').text(),
         contact: $('#yhteystiedot').text(),
         address: $('#tyopaikanOsoite').text(),
@@ -40,4 +40,16 @@ function scrape(data) {
         duration: $('#tyonKestoTekstiYhdistetty').text(),
         added: $('#ilmoituspaivamaarateksti').text()
     };
+}
+
+function getCompany(parts) {
+    if(parts.slice(-1)[0] === parts.slice(-2)[0]) {
+        return parts.slice(-3)[0].trim();
+    }
+
+    if(parts.length > 3) {
+        return parts[2].trim();
+    }
+
+    return parts.slice(-2)[0].trim();
 }
