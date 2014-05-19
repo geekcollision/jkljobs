@@ -24,7 +24,7 @@ function scrape(data) {
 
     return {
         title: parts[0],
-        description: $('h3').next().text(),
+        description: $('h3').next().text().trim(),
         link: '', // TODO
         company: parts[1],
         gid: 'mol' + $('#ilmoitusnumero').text(),
