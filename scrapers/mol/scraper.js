@@ -12,7 +12,11 @@ function main(o, url, cb) {
             return cb(err);
         }
 
-        cb(null, scrape(body));
+        var d = scrape(body);
+
+        d.link = url;
+
+        cb(null, d);
     });
 }
 
@@ -25,7 +29,6 @@ function scrape(data) {
     return {
         title: parts[0],
         description: $('h3').next().text().trim(),
-        link: '', // TODO
         company: parts[1].trim(),
         gid: 'mol' + $('#ilmoitusnumero').text(),
         contact: $('#yhteystiedot').text(),

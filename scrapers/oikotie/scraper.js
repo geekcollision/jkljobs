@@ -12,7 +12,11 @@ function main(o, url, cb) {
             return cb(err);
         }
 
-        cb(null, scrape(body));
+        var d = scrape(body);
+
+        d.link = url;
+
+        cb(null, d);
     });
 }
 
@@ -25,7 +29,6 @@ function scrape(data) {
     return {
         title: $('#jobTitle .n').text(),
         description: $('#jobDescription').text().trim(),
-        link: '', // TODO
         company: $('#jobTitle .e').text(),
         gid: 'oikotie' + $additional.find('li').first().find('strong').text(),
         contact: '',
