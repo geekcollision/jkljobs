@@ -7,8 +7,15 @@ var schema = sugar.schema();
 schema(module.exports, 'Job').fields({
     title: String,
     description: String,
-    date: Date,
     link: String,
     company: String,
-    gid: String
+    gid: String,
+    contact: String,
+    address: String,
+    salary: String,
+    experience: String,
+    begins: String,
+    type: String,
+    duration: String,
+    added: Date
 });

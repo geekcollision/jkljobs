@@ -30,10 +30,17 @@ module.exports = function(o, cb) {
         var post;
 
         while(post = this.read()) {
-            data.push(post.link.split('?')[0]);
+            data.push(getLink(post.link));
         }
     });
     feedparser.on('finish', function() {
         cb(null, data);
     });
 };
+
+// transforms link to light version
+function getLink(url) {
+    var root = 'http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=';
+
+    return root + url.split('/').slice(-1)[0].split('_')[0];
+}
