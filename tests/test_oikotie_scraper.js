@@ -3,13 +3,13 @@
 
 var fs = require('fs');
 
-var scrape = require('../scrapers/oikotie/indexer').scrape;
+var scrape = require('../scrapers/oikotie/scraper').scrape;
 
 
 tests();
 
 function tests() {
-    fs.readFile('./data/oikotie_index.html', {
+    fs.readFile('./data/oikotie.html', {
         encoding: 'utf8'
     }, function(err, d) {
         if(err) {

@@ -19,27 +19,28 @@
 <head profile="http://www.w3.org/1999/xhtml/vocab">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UA4HVVFWGwEEUFNXBAc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,o,a,u){return s?s-=1:n("err",[u||new UncaughtException(t,e,o)]),"function"==typeof i?i.apply(this,r(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}var n=t("handle"),r=t(6),o=t(5),i=window.onerror,a=!1,s=0;t("loader").features.push("err"),window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),a=!0)}o.on("fn-start",function(){a&&(s+=1)}),o.on("fn-err",function(t,e,r){a&&(this.thrown=!0,n("err",[r,(new Date).getTime()]))}),o.on("fn-end",function(){a&&!this.thrown&&s>0&&(s-=1)}),o.on("internal-error",function(t){n("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);return i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1),n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,p=e(d);if(p&&(r.rxSize=p),this.sameOrigin){var f=t.getResponseHeader("X-NewRelic-App-Data");f&&(n.cat=f.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){a.emit("internal-error",e)}};for(var p=0;u>p;p++)n.addEventListener(s[p],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=c.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID){c.proto="https"===f.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=c.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",p="attachEvent",f=(""+location).split("?")[0],c=e.exports={offset:i(),origin:f,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[p]("onreadystatechange",r),s[p]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,n,r){function nrWrapper(){try{var a,u=s(arguments),d=this,p=n&&n(u,d)||{}}catch(f){i([f,"",[u,d,r],p])}o(e+"start",[u,d,r],p);try{return a=t.apply(d,u)}catch(c){throw o(e+"err",[u,d,c],p),c}finally{o(e+"end",[u,d,a],p)}}return t&&"function"==typeof t&&t.apply&&!t._wrapped?(e||(e=""),nrWrapper._wrapped=!0,nrWrapper):t}function r(t,e,r,o){r||(r="");var i,a,s,u="-"===r.charAt(0);for(s=0;s<e.length;s++)a=e[s],i=t[a],i&&"function"==typeof i&&i.apply&&!i._wrapped&&(t[a]=n(i,u?a+r:r,o,a,t))}function o(t,e,n){try{a.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{a.emit("internal-error",t)}catch(e){}}var a=t(1),s=t(2);e.exports=n,n.inPlace=r},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta charset="utf-8">
 <meta http-equiv="cleartype" content="on">
 <meta http-equiv="ImageToolbar" content="false">
-<link rel="canonical" href="http://tyopaikat.oikotie.fi/?toimiala[104]=104&amp;sijainti[11]=11">
+<link rel="canonical" href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/designer-software-applications-testing/785584">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <link rel="shortcut icon" href="http://ot11.snstatic.fi/favicon.ico" type="image/vnd.microsoft.icon">
-<meta http-equiv="x-dns-prefetch-control" content="on">
-<meta name="Generator" content="Drupal 7 (http://drupal.org)">
+<meta charset="utf-8">
 <link rel="dns-prefetch" href="//ot11.snstatic.fi">
+<meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="dns-prefetch" href="//ot12.snstatic.fi">
-<meta name="description" content="Löydä avoimet työpaikat haulla Keski-Suomi, IT/tietoliikenne Oikotie Työpaikat -palvelusta.">
+<meta name="Generator" content="Drupal 7 (http://drupal.org)">
+<meta name="description" content="We are now looking for the following professionalDesigner, Software Applications TestingYour task will mainly be focused on testing of Web and mobile ">
 <meta property="twitter:site:id" content="835101079">
 <meta property="twitter:site" content="@Oikotie_duunit">
 <meta property="fb:app_id" content="214857548674117">
-<meta property="og:title" content="Avoimet työpaikat IT/tietoliikenne - Keski-Suomi - Oikotie Työpaikat">
+<meta property="og:title" content="Designer, Software Applications Testing, Polar Electro Oy - Oikotie Työpaikat">
 <meta property="twitter:card" content="summary">
-<meta property="og:description" content="Löydä avoimet työpaikat haulla Keski-Suomi, IT/tietoliikenne Oikotie Työpaikat -palvelusta.">
+<meta property="og:description" content="We are now looking for the following professionalDesigner, Software Applications TestingYour task will mainly be focused on testing of Web and mobile ">
 <meta property="og:image" content="http://tyopaikat.oikotie.fi/sites/all/themes/custom/tyopaikat_oikotie_fi/images/og_image_green.jpg">
-<meta property="og:url" content="http://tyopaikat.oikotie.fi/">
-  <title>Avoimet työpaikat IT/tietoliikenne - Keski-Suomi - Oikotie Työpaikat</title>
-  <link type="text/css" rel="stylesheet" href="http://ot12.snstatic.fi/sites/default/files/advagg_css/css__A_glP7dCbgjLF87ttELZAdr0OjBSycr0I-s6UwDNJzU__QZgqqHyqjRwiMK9InLYcwku8bVcQyR_CxBmiCRHqeag__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.css" media="all">
+<meta property="og:image" content="http://ot11.snstatic.fi/sites/default/files/styles/logo_large/public/imagecache/external/8c39885da12f052533309bbf7c4022b0.jpg?itok=EJjfZUey">
+<meta property="og:url" content="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/designer-software-applications-testing/785584">
+  <title>Designer, Software Applications Testing, Polar Electro Oy - Oikotie Työpaikat</title>
+  <link type="text/css" rel="stylesheet" href="http://ot12.snstatic.fi/sites/default/files/advagg_css/css__fUdYjtMwePIhULBGnaLJtwackerHkrtA_eZ0zlIpyxk__Nh6cQZ1OJ_4irSfyvLIEPxCOxMg7zAT56p5YoyfKIOI__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.css" media="all">
 
 <!--[if lt IE 10]>
 <link type="text/css" rel="stylesheet" href="http://ot12.snstatic.fi/sites/default/files/advagg_css/css__nZNadF7FSz6AJzkEHV8JuJ9JwtWMbz1RxpWII_trBHs__t8MfaWQdISKHx9zE4oGl2t10csRyFEG-ry07RYsvDVw__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.css" media="print">
@@ -48,23 +49,23 @@
 <!--[if lt IE 10]>
 <link type="text/css" rel="stylesheet" href="http://ot12.snstatic.fi/sites/default/files/advagg_css/css__85VolS99wpDtCfxBMKSuwB_8Cikw5NOVnSCcBb800UE__S8_a1ed8qV0f6f2te81D5nN_HNJVDsSIitWaxbH-Yz0__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.css" media="all">
 <![endif]-->
-  <script type="text/javascript" src="http://ot11.snstatic.fi/sites/default/files/advagg_js/js__ttqj74MAJaaZYl9vhc7T_aU-cWFOmFK59rCA9fIxO7s__69J3Ro2cG11P4BJ5Qm4FUJYPIf7LCdfAu11nLdQZP1s__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.js"></script>
+  <script type="text/javascript" src="http://ot11.snstatic.fi/sites/default/files/advagg_js/js__XdLCT3xK4f8nTQNduONWMDzvJN8yEtZmai8JfIWWg6M__GnwA63j_sgYa7qCoFNz2psOu607eNhlbzLhNHXA_iwo__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.js"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
-jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tyopaikat_oikotie_fi","theme_token":"lpg0G8Jlw5_wmWHac1_FT5ZlUQqTnrQD9_vlV9POQv0","css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/ckeditor.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/rate\/rate.css":1,"sites\/all\/modules\/contrib\/asset\/css\/assets.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/layouts\/jobsearch\/jobsearch.css":1,"modules\/locale\/locale.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/normlize.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/fonts.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/foundation.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/normalize.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/application.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/fixes.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/print.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/ie8.css":1},"js":{"sites\/all\/libraries\/jquery-plugins\/jquery.lazyload.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.alerts.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.topbar.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/application.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_analytics\/js\/spring-1.6.0.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"sites\/all\/libraries\/js\/device-edited.min.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/custom\/oikotie_feature_basic_install\/js\/basic-install.min.js":1,"sites\/all\/libraries\/jquery-plugins\/tiny-pubsub.min.js":1,"sites\/all\/libraries\/es5-shim\/es5-shim.min.js":1,"sites\/all\/libraries\/json2\/json2.min.js":1,"sites\/all\/libraries\/jstorage\/jstorage.min.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery.timer.min.js":1,"sites\/all\/libraries\/history-js\/history.adapter.jquery.min.js":1,"sites\/all\/libraries\/history-js\/history.html4.min.js":1,"sites\/all\/libraries\/history-js\/history.min.js":1,"sites\/all\/libraries\/handlebars\/handlebars.min.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery-ui-1.10.3.custom.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/vendor\/custom.modernizr.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_search_back.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_view_mode.min.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery.ba-throttle-debounce.min.js":1,"public:\/\/languages\/fi_1FB0mPN-rt-YuUzY2XV5WNwLAb3TU5lrcBu6ZVFHeXk.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_search_reset.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_search_expanded.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/widgets\/checkboxCollection.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/widgets\/optionCheckbox.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_search_ajax.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie-checkboxes.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/widgets\/selectElement.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_analytics\/js\/analytics.min.js":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"site_name":"Oikotie Ty\u00f6paikat","site_slogan":"Avoimet ty\u00f6paikat, l\u00f6yd\u00e4 seuraava ty\u00f6paikkasi","lang_code":"fi","clientsideValidation":{"general":{"months":{"Tammikuu":1,"Tam":1,"Helmikuu":2,"Hel":2,"Maaliskuu":3,"Maa":3,"Huhtikuu":4,"Huh":4,"Toukokuu":5,"Kes\u00e4kuu":6,"Kes":6,"Hein\u00e4kuu":7,"Hei":7,"Elokuu":8,"Elo":8,"Syyskuu":9,"Syy":9,"Lokakuu":10,"Lok":10,"Marraskuu":11,"Mar":11,"Joulukuu":12,"Jou":12}}}});
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tyopaikat_oikotie_fi","theme_token":"1uIRoz0CmPSr2mDABt5YmXL2uEEAU8Nvjm9mmmccTKc","css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ckeditor\/ckeditor.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/rate\/rate.css":1,"sites\/all\/modules\/contrib\/asset\/css\/assets.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/layouts\/job-page\/job-page.css":1,"modules\/locale\/locale.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/normlize.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/fonts.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/foundation.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/normalize.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/application.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/fixes.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/print.css":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/css\/ie8.css":1},"js":{"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.alerts.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/foundation\/foundation.topbar.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/application.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_analytics\/js\/spring-1.6.0.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"sites\/all\/libraries\/js\/device-edited.min.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/custom\/oikotie_feature_basic_install\/js\/basic-install.min.js":1,"sites\/all\/libraries\/jquery-plugins\/tiny-pubsub.min.js":1,"sites\/all\/libraries\/es5-shim\/es5-shim.min.js":1,"sites\/all\/libraries\/json2\/json2.min.js":1,"sites\/all\/libraries\/jstorage\/jstorage.min.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery.timer.min.js":1,"sites\/all\/libraries\/history-js\/history.adapter.jquery.min.js":1,"sites\/all\/libraries\/history-js\/history.html4.min.js":1,"sites\/all\/libraries\/history-js\/history.min.js":1,"sites\/all\/themes\/custom\/tyopaikat_oikotie_fi\/js\/vendor\/custom.modernizr.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_search_back.min.js":1,"sites\/all\/modules\/custom\/oikotie_feature_job_search_view\/js\/oikotie_view_mode.min.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery.ba-throttle-debounce.min.js":1,"public:\/\/languages\/fi_1FB0mPN-rt-YuUzY2XV5WNwLAb3TU5lrcBu6ZVFHeXk.js":1,"sites\/all\/modules\/custom\/oikotie_tyopaikat_stat\/js\/oikotie_tyopaikat_stat.js":1,"sites\/all\/modules\/custom\/oikotie_feature_analytics\/js\/analytics.min.js":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"site_name":"Oikotie Ty\u00f6paikat","site_slogan":"Avoimet ty\u00f6paikat, l\u00f6yd\u00e4 seuraava ty\u00f6paikkasi","lang_code":"fi","oikotieJobStat":{"channelId":"1","jobId":"785584","companyId":"67935","statHost":"tyopaikat.oikotie.fi"},"clientsideValidation":{"general":{"months":{"Tammikuu":1,"Tam":1,"Helmikuu":2,"Hel":2,"Maaliskuu":3,"Maa":3,"Huhtikuu":4,"Huh":4,"Toukokuu":5,"Kes\u00e4kuu":6,"Kes":6,"Hein\u00e4kuu":7,"Hei":7,"Elokuu":8,"Elo":8,"Syyskuu":9,"Syy":9,"Lokakuu":10,"Lok":10,"Marraskuu":11,"Mar":11,"Joulukuu":12,"Jou":12}}}});
 //--><!]]>
 </script>
 </head>
-<body class="html front not-logged-in no-sidebars page-haku padd-content-image i18n-fi no-js ottp" >
+<body class="html not-front not-logged-in no-sidebars page-avoimet-tyopaikat page-avoimet-tyopaikat-designer-software-applications-testing page-avoimet-tyopaikat-designer-software-applications-testing- page-avoimet-tyopaikat-designer-software-applications-testing-785584 padd-content-image i18n-fi no-js ottp" >
   <div class="light-backdrop"></div>
-  <div class="light-backdrop-search"><div class="thobber"></div></div>  <noscript><img src="http://oikotie.spring-tns.net/j0=,,,;+,,cp=tyopaikat/tyopaikat_etusivu;;;;" alt=""></noscript>
+    <noscript><img src="http://oikotie.spring-tns.net/j0=,,,;+,,cp=tyopaikat/tyopaikat_kohdesivut;;;;" alt=""></noscript>
 <noscript><img src="http://analytics.sanoma.fi/zag.gif?Log=1&dt=JSnoscript" border="0" width="1" height="1"/></noscript>
-<noscript><p><img src="//b.scorecardresearch.com/p?c1=2&amp;c2=6035634&amp;ns_site=tyopaikat-oikotie&amp;name=etusivu" height="1" width="1" alt="*"/></p></noscript>
+<noscript><p><img src="//b.scorecardresearch.com/p?c1=2&amp;c2=6035634&amp;ns_site=tyopaikat-oikotie&amp;name=avoimet-tyopaikat.designer-software-applications-testing.785584.page" height="1" width="1" alt="*"/></p></noscript>
   <p id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable">Hyppää pääsisältöön</a>
   </p>
   <!-- Page Top -->
-
+ 
 <!-- Navigation -->
 <div id="top-navbar" class="fixed">
   <div class="sitewide-nav-bar">
@@ -74,8 +75,8 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 <li class="last leaf"><a href="http://autot.oikotie.fi" title="">Autot</a></li>
 </ul>    </div>
     <div class="right">
-      <ul class="language-switcher-locale-url"><li class="fi first active"><a href="/" class="language-link active" lang="fi">fin</a></li>
-<li class="en last"><a href="/en" class="language-link" lang="en">eng</a></li>
+      <ul class="language-switcher-locale-url"><li class="fi first active"><a href="/avoimet-tyopaikat/designer-software-applications-testing/785584" class="language-link active" lang="fi">fin</a></li>
+<li class="en last"><a href="/en/avoimet-tyopaikat/designer-software-applications-testing/785584" class="language-link" lang="en">eng</a></li>
 </ul>    </div>
   </div>
   <nav class="top-bar topshadow" data-options="back_text: Takaisin">
@@ -87,9 +88,11 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   <li class="toggle-topbar menu-icon"><a href="#"><span>&nbsp;</span></a></li>
 </ul>
 <section class="top-bar-section">
-  <ul class="right"><li class="divider">&nbsp;</li><li class=""><a href="/haku" class="first leaf active active">Avoimet työpaikat</a></li><li class="divider">&nbsp;</li><li class=""><a href="/kesatyo" class="leaf">Kesätyöt</a></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle" class="expanded">Työntekijälle</a><ul id="1089" class="dropdown"><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/tyokalut" class="first expanded">Työkalut</a><ul id="1097" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/tyonhaku">Työnhaku</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/some-ja-tyoelama">SoMe ja työelämä</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/palkkalaskuri">Palkkalaskuri</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/opiskelijoille">Opiskelijoille</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/tyoelamatietoa" class="expanded">Työelämätietoa</a><ul id="1099" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyollisyysnakymat">Työllisyysnäkymät</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyoelamatietoa/tietoa-yrityksista">Tietoa yrityksistä</a></li><li class="divider">&nbsp;</li><li><a href="/toimiala/">Toimialat</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/kehity-ja-kehita" class="expanded">Kehity ja kehitä</a><ul id="1101" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/tyohyvinvointi">Työhyvinvointi</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/testit">Testaa itsesi</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/tyouran-alussa">Työuran alussa</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/kun-vaihdat-ammattia">Kun vaihdat ammattia</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/uratarinat">Uratarinat</a></li></ul></li><li class="divider">&nbsp;</li><li><a href="/profiili">Profiili</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tutustu-tyonantajiin" class="expanded">Tutustu työnantajiin</a><ul id="1091" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/yritys">Yrityshaku</a></li><li class="divider">&nbsp;</li><li><a href="/tutustu-tyonantajiin">Työnantajaesittelyt</a></li></ul></li><li class="divider">&nbsp;</li><li class=""><a href="/tyontekijalle/kehity-ja-kehita/uratarinat" class="leaf">Uratarinat</a></li><li class="divider">&nbsp;</li><li class=""><a href="http://tyonantaja.oikotie.fi" class="last leaf">Työnantajalle</a></li></ul></section>
+  <ul class="right"><li class="divider">&nbsp;</li><li class=""><a href="/haku" class="first leaf">Avoimet työpaikat</a></li><li class="divider">&nbsp;</li><li class=""><a href="/kesatyo" class="leaf">Kesätyöt</a></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle" class="expanded">Työntekijälle</a><ul id="1089" class="dropdown"><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/tyokalut" class="first expanded">Työkalut</a><ul id="1097" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/tyonhaku">Työnhaku</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/some-ja-tyoelama">SoMe ja työelämä</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/palkkalaskuri">Palkkalaskuri</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyokalut/opiskelijoille">Opiskelijoille</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/tyoelamatietoa" class="expanded">Työelämätietoa</a><ul id="1099" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyollisyysnakymat">Työllisyysnäkymät</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/tyoelamatietoa/tietoa-yrityksista">Tietoa yrityksistä</a></li><li class="divider">&nbsp;</li><li><a href="/toimiala/">Toimialat</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tyontekijalle/kehity-ja-kehita" class="expanded">Kehity ja kehitä</a><ul id="1101" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/tyohyvinvointi">Työhyvinvointi</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/testit">Testaa itsesi</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/tyouran-alussa">Työuran alussa</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/kun-vaihdat-ammattia">Kun vaihdat ammattia</a></li><li class="divider">&nbsp;</li><li><a href="/tyontekijalle/kehity-ja-kehita/uratarinat">Uratarinat</a></li></ul></li><li class="divider">&nbsp;</li><li><a href="/profiili">Profiili</a></li></ul></li><li class="divider">&nbsp;</li><li class="has-dropdown"><a href="/tutustu-tyonantajiin" class="expanded">Tutustu työnantajiin</a><ul id="1091" class="dropdown"><li class="divider">&nbsp;</li><li><a href="/yritys">Yrityshaku</a></li><li class="divider">&nbsp;</li><li><a href="/tutustu-tyonantajiin">Työnantajaesittelyt</a></li></ul></li><li class="divider">&nbsp;</li><li class=""><a href="/tyontekijalle/kehity-ja-kehita/uratarinat" class="leaf">Uratarinat</a></li><li class="divider">&nbsp;</li><li class=""><a href="http://tyonantaja.oikotie.fi" class="last leaf">Työnantajalle</a></li></ul></section>
   </nav>
 </div>
+
+<!-- Messages -->
 
 <!-- Content -->
   <div class="region region-content">
@@ -97,754 +100,287 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 
     
   <div class="content">
-    <div class="brandimage brandimage-bg5">
-  
-  <div id="oikotie-checkboxes-scroll-here" class="row">
-    <div class="small-12 large-12 columns">
-      <h2 class="dtitle">Löydä seuraava työpaikkasi</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 large-12 columns">
-      <div class="panel-pane pane-block pane-views-7e512bad217d3587e49b41ecd4759cec" >
+    <div id="kohdesivu"><div class="panel-display first twocol-8-4-stacked job-page row">
+  <div class="large-12 columns">
+    <div class="inside"><div class="panel-pane pane-views-panes pane-oikotie-job-view-tpl-header" >
   
       
   
   <div class="pane-content">
-    <form class="use-oikotie-checkboxes custom" action="/haku" method="get" id="views-exposed-form-job-search-job-search-panel" accept-charset="UTF-8"><div><div class="row margin-fix">
-  <div class="small-12 large-12 columns">
-    <div class="searchbox views-exposed-form">
-      <!-- Primary filters -->
-      <div class="row filters-primary">
-        <!-- Field of business -->
-        <div class="small-12 large-3 columns">
-          <label for="edit-toimiala">Tehtävän toimiala</label>
-          <div class="views-widget">
-            <div class="form-item form-type-select form-item-toimiala">
- <select multiple="multiple" name="toimiala[]" id="edit-toimiala" size="1" class="form-select"><option value="-1">Kaikki</option><option value="100">Asennus/huolto</option><option value="119">Asiakaspalvelu/palvelu</option><option value="103">Henkilöstöhallinto/rekrytointi </option><option value="102">Hotelli- ja ravintola-ala</option><option value="104" selected="selected">IT/tietoliikenne</option><option value="118">Johtotehtävät</option><option value="101">Julkishallinto/järjestöt </option><option value="126">Kauneudenhoito/hyvinvointi</option><option value="105">Kiinteistöala</option><option value="106">Konsultointi/valmennus</option><option value="107">Koulutus/opetus</option><option value="108">Kulttuuri/humanistinen ala</option><option value="112">Lainopillinen ala</option><option value="109">Liikenne/kuljetus/ logistiikka</option><option value="113">Luonnontiede/maa- ja metsätalous </option><option value="110">Lääketeollisuus/farmasia</option><option value="115">Markkinointi/mainonta</option><option value="114">Matkailuala</option><option value="116">Media/viestintä</option><option value="111">Myyntitehtävät</option><option value="132">Ostotehtävät/hankinta</option><option value="120">Pankki/rahoitus/vakuutus</option><option value="131">Rakennusala</option><option value="121">Suunnittelu</option><option value="122">Taloushallinto/tilintarkastus </option><option value="123">Tekniikka</option><option value="124">Teollisuus/tuotanto</option><option value="125">Terveydenhuolto/sosiaaliala</option><option value="133">Toimistotyö</option><option value="127">Tutkimus/kehitys</option><option value="134">Vienti/tuonti</option><option value="128">Vähittäis- ja tukkukauppa</option><option value="129">Yrittäjyys</option><option value="130">Muu</option></select>
-</div>
-          </div>
-        </div>
-        
-        <!-- Location -->
-        <div class="small-12 large-3 columns">
-          <label for="edit-sijainti">Sijainti</label>
-          <div class="views-widget">
-            <div class="form-item form-type-select form-item-sijainti">
- <select multiple="multiple" name="sijainti[]" id="edit-sijainti" size="1" class="form-select"><option value="-1">Kaikki</option><option value="101">Pääkaupunkiseutu</option><option value="100">Avoin</option><option value="1">Uusimaa</option><option value="2">Ahvenanmaa</option><option value="3">Varsinais-Suomi</option><option value="4">Etelä-Karjala</option><option value="5">Etelä-Pohjanmaa</option><option value="6">Etelä-Savo</option><option value="7">Kanta-Häme</option><option value="9">Kainuu</option><option value="10">Keski-Pohjanmaa</option><option value="11" selected="selected">Keski-Suomi</option><option value="12">Kymenlaakso</option><option value="13">Lappi</option><option value="14">Pirkanmaa</option><option value="15">Pohjanmaa</option><option value="16">Pohjois-Karjala</option><option value="17">Pohjois-Pohjanmaa</option><option value="18">Pohjois-Savo</option><option value="19">Päijät-Häme</option><option value="20">Satakunta</option><option value="102">Ulkomaat</option></select>
-</div>
-          </div>
-        </div>
-        
-        <!-- Keyword -->
-        <div class="small-12 large-3 columns">
-          <label for="edit-jq">Hakusana</label>
-          <div class="views-widget">
-            <div class="form-item form-type-textfield form-item-jq">
- <input type="text" id="edit-jq" name="jq" value="" size="30" maxlength="128" class="form-text" />
-</div>
-          </div>
-        </div>
-        
-        <!-- Submit button -->
-        <div class="small-12 large-3 columns" id="submit-primary-location">
-          <div id="submit-button-wrap">
-            <label for="edit-submit-job-search">&nbsp;</label>
-            <input type="submit" id="edit-submit-job-search" name="" value="Hae" class="form-submit cta1" />          </div>
-        </div>
-      </div>
-      
-      <!-- Secondary filters -->
-      <div class="row filter-selectors">
-        <!-- Toggle link -->
-        <div class="small-12 large-12 columns">
-          <span id="toggle-expanded-search" class="fake-link">Laajennettu haku</span>
-          <span id="reset-search" class="fake-link">Tyhjennä hakuehdot</span>
-        </div>
-      </div>
-            <div class="filters-secondary" data-state="closed" style="display:none;">
-        <div class="row">
-          <!-- Job category -->
-          <div class="small-12 large-3 columns">
-            <label for="edit-tlaatu">Työn laatu</label>
-            <div class="views-widget">
-              <div class="form-item form-type-select form-item-tlaatu">
- <select multiple="multiple" name="tlaatu[]" id="edit-tlaatu" size="1" class="form-select"><option value="-1">Kaikki</option><option value="1">Kokopäiväinen</option><option value="2">Osa-aikainen</option><option value="3">Tuntityö</option><option value="10">Muu</option></select>
-</div>
-            </div>
-          </div>
-          
-          <!-- Contract type -->
-          <div class="small-12 large-3 columns">
-            <label for="edit-tslaatu">Työsuhteen laatu</label>
-            <div class="views-widget">
-              <div class="form-item form-type-select form-item-tslaatu">
- <select multiple="multiple" name="tslaatu[]" id="edit-tslaatu" size="1" class="form-select"><option value="-1">Kaikki</option><option value="3">Vakituinen työsuhde</option><option value="4">Määräaikainen työsuhde</option><option value="1">Vakinainen virka</option><option value="2">Määräaikainen virka</option><option value="6">Kesätyö</option><option value="7">Harjoittelu</option><option value="8">Sijaisuus</option><option value="5">Muu</option></select>
-</div>
-            </div>
-          </div>
-          
-          <!-- Excluding keyword -->
-          <div class="small-12 large-3 columns">
-            <label for="edit-jqex">Älä hae sanoilla</label>
-            <div class="views-widget">
-              <div class="form-item form-type-textfield form-item-jqex">
- <input type="text" id="edit-jqex" name="jqex" value="" size="30" maxlength="128" class="form-text" />
-</div>
-            </div>
-          </div>
-          
-          <!-- Empty space for button -->
-          <div class="small-12 large-3 columns" id="submit-secondary-location"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-</div></form>  </div>
-
-  
-  </div>
-    </div>
-  </div>
-</div>
-
-<div class="panel-display" >
-    <div class="row">
-    <div class="small-12 large-8 columns">
-      <div class="dynamic-content">
-        <div class="inside"><div class="panel-pane pane-views-panes pane-job-search-job-search-panel" >
-  
-  
-  <div class="pane-content">
-    <div class="view view-job-search view-id-job_search view-display-id-job_search_panel view-dom-id-af9decf676b0bd4396449bd15c90aa1f">
     
-  <div class="row margin-fix" id="sortbox">
-    <div class="small-12 large-12 columns">
 
-      <!-- Large sortbox -->
-      <div class="panel2 nopadding-bottom hide-for-small">
-        <div class="right">
-          <select class="view-mode-toggle" name="view-mode-toggle">
-            <option value="1">Laaja näkymä</option>
-            <option value="2">Tiivis näkymä</option>
-          </select>
-        </div>
-        <h1 class="smallh1">
-          <span class="title">Avoimet työpaikat</span>
-          <span class="pos-title">IT/tietoliikenne - Keski-Suomi</span>
-        </h1>
-        <div class="left">
-          <p>
-            <span class="sortbox-results-counter">7</span>&nbsp;ilmoitusta            &emsp;
-            <span class="fake-link sortbox-add-agent">Tee ilmoitusvahti</span>
-          </p>
-        </div>
-        <div class="right">
-          <div class="row">
-            <div class="large-5 columns text-right">
-              <label for="sortbox-sort-select" class="sort-label">Järjestä</label>
-            </div>
-            <div class="large-7 columns">
-              <select name="sort_by" id="sortbox-sort-select">
-                <option value="publication_time">Julkaistu</option>
-                <option value="name">Tehtävänimike</option>
-                <option value="employer">Työnantaja</option>
-                <option value="score" disabled="disabled">Avainsana</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Small sortbox -->
-      <div class="small-12 large-12 columns panel2 nopadding-bottom show-for-small small-info">
-        <h1 class="smallh1">
-          <span class="title">Avoimet työpaikat</span>
-          <span class="pos-title">IT/tietoliikenne - Keski-Suomi</span>
-        </h1>
-        <p>
-          <span class="sortbox-results-counter">7</span>&nbsp;ilmoitusta          <span class="fake-link sortbox-add-agent">Tee ilmoitusvahti</span>
-        </p>
-      </div>
-      <div class="panel2 show-for-small small-sorts">
-        <div class="text-center">
-          <label for="sortbox-sort-select" class="sort-label">Järjestä</label>
-        </div>
-        <select name="sort_by" id="sortbox-sort-select">
-          <option value="publication_time">Julkaistu</option>
-          <option value="name">Tehtävänimike</option>
-          <option value="employer">Työnantaja</option>
-          <option value="score" disabled="disabled">Avainsana</option>
-        </select>
-      </div>
+  &nbsp;
 
-    </div>
-  </div>
-  
-      <div class="view-content">
-      
-<!-- Dynamic content -->
-<div class="row margin-fix dynamic-search-results">
-  <div class="large-12 columns search-results">
-    <ul class="joblist">    </ul>  </div>
-</div>
-<div class="row margin-fix" id="pager" style="display: none;">
-  <div class="small-12 large-12 columns dynamic-pager">
-    <div class="show-for-medium-up">
-      <div class="panel2">
-        <div class="row">
-          <div class="small-12 large-4 columns">
-            <p class="left text-link fake-link pager-to-top"><i class="foundicon-enclosed-up-arrow left" style="margin-right: 6px"></i> Takaisin ylös</p>
-          </div>
-          <div class="small-12 large-4 columns text-center">
-            <p class="pager-results-counter"></p>
-          </div>
-          <div class="small-12 large-4 columns">
-            <p class="right text-link fake-link pager-show-more"><i class="foundicon-enclosed-down-arrow right" style="margin-left:6px;"></i> Näytä lisää</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-8 columns large-centered">
-          <span class="cta1 sortbox-add-agent">Tee ilmoitusvahti</span>
-        </div>
-      </div>
-    </div>
-    <div class="show-for-small">
-      <div class="panel2">
-        <div class="row">
-          <div class="small-12 columns text-center">
-            <p class="pager-results-counter"></p>
-          </div>
-        </div>
-      </div>
-      <div class="panel2">
-        <div class="row">
-          <div class="small-6 columns">
-            <p class="left text-link fake-link pager-to-top"><i class="foundicon-enclosed-up-arrow left" style="margin-right: 6px"></i> Takaisin ylös</p>
-          </div>
-          <div class="small-6 columns">
-            <p class="right text-link fake-link pager-show-more"><i class="foundicon-enclosed-down-arrow right" style="margin-left:6px;"></i> Näytä lisää</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="small-12 columns small-centered">
-          <span class="cta1 sortbox-add-agent">Tee ilmoitusvahti</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Static content -->
-<div class="row margin-fix static-search-results show-only-for-ses">
-  <div class="small-12 large-12 columns">
-    <ul class="joblist">          <li class="views-row views-row-1 views-row-odd views-row-first joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/temporary-production-specialist/785190" class="list-link joblisting-wrapper" id="otj785190" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot12.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/8967e913bb6b883541a872ea7aee4b61.png?itok=8YoSu552" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot12.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/8967e913bb6b883541a872ea7aee4b61.png?itok=8YoSu552"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">Temporary Production Specialist</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Aditro Oy</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-05-15T00:00:00+03:00">
-            15.5.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Jyväskylä          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-2 views-row-even joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/hosting-palvelujen-asiantuntija-jyvaskylaan/784937" class="list-link joblisting-wrapper" id="otj784937" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/366a2e5758de17b86ebd711342e8407a.jpg?itok=TY0hv7qV" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/366a2e5758de17b86ebd711342e8407a.jpg?itok=TY0hv7qV"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">Hosting –palvelujen asiantuntija Jyväskylään</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Manpower</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-05-14T00:00:00+03:00">
-            14.5.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Keski-Suomi          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-3 views-row-odd joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/haemme-net-osaajaaohjelmoijaa/783834" class="list-link joblisting-wrapper" id="otj783834" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/cc21e9930add161a617c28b974fdea60.jpg?itok=XCPczvDg" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/cc21e9930add161a617c28b974fdea60.jpg?itok=XCPczvDg"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">Haemme .NET osaajaa/&#8203;ohjelmoijaa</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Adecco</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-05-07T00:00:00+03:00">
-            7.5.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Jyväskylä          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-4 views-row-even joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/haemme-net-osaajaaohjelmoijaa/783800" class="list-link joblisting-wrapper" id="otj783800" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/a7154afc6cb95bdf2e4a6429bf6dc811.jpg?itok=JBUS8nPZ" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/a7154afc6cb95bdf2e4a6429bf6dc811.jpg?itok=JBUS8nPZ"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">Haemme .NET osaajaa/&#8203;ohjelmoijaa</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Adecco</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-05-07T00:00:00+03:00">
-            7.5.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            JYVÄSKYLÄ          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-5 views-row-odd joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/software-engineer/782722" class="list-link joblisting-wrapper" id="otj782722" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/7ca0a3910c1ade9d334ff1fcacb3d607.jpg?itok=4OwctQ_j" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/7ca0a3910c1ade9d334ff1fcacb3d607.jpg?itok=4OwctQ_j"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">Software Engineer</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Aidon Oy</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-04-30T00:00:00+03:00">
-            30.4.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Jyväskylä          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-6 views-row-even joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/java-ohjelmistokehittaja/780561" class="list-link joblisting-wrapper" id="otj780561" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/366a2e5758de17b86ebd711342e8407a.jpg?itok=TY0hv7qV" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/366a2e5758de17b86ebd711342e8407a.jpg?itok=TY0hv7qV"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">JAVA-Ohjelmistokehittäjä</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Kilosoft Oy</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-04-15T00:00:00+03:00">
-            15.4.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Keski-Suomi, Pirkanmaa, Uusimaa          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-          <li class="views-row views-row-7 views-row-odd views-row-last joblist-item">
-<a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/sharepoint-arkkitehtitekninen-konsultti/780535" class="list-link joblisting-wrapper" id="otj780535" typeof="schema:JobPosting">
-  <div class="joblisting smallertext">
-    <div class="logo-wrap"><div class="inner-logo-wrap">
-      <img  class="listlogo lazy-load" data-original="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/c06f4557a62efc2ac25b3bf350874453.jpg?itok=hExNlqot" typeof="foaf:Image schema:image" alt=""><noscript><img  class="listlogo lazy-load" typeof="foaf:Image schema:image" alt="" src="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/c06f4557a62efc2ac25b3bf350874453.jpg?itok=hExNlqot"></noscript>    </div></div>
-    <div class="data-wrap">
-      <div class="maininfo">
-        <h4 class="job-title" property="schema:title schema:description">SharePoint-arkkitehti/&#8203;tekninen konsultti</h4>
-        <h6 class="metadata">
-          <span property="schema:hiringOrganization" typeof="schema:Organization">
-            <strong property="schema:name">Digia Oy</strong></span> |
-          Julkaistu          <span property="schema:datePosted" content="2014-04-15T00:00:00+03:00">
-            15.4.2014          </span>
-        </h6>
-      </div>
-      <span property="schema:jobLocation" typeof="schema:Place">
-        <span property="schema:address" typeof="schema:PostalAddress">
-          <p class="locations" property="schema:addressLocality">
-            Jyväskylä, Tampere, Uusimaa          </p>
-        </span>
-      </span>
-    </div>
-  </div>
-  </a>
-</li>
-        </ul>  </div>
-</div>
-<noscript>
-  <style type="text/css">
-    .show-only-for-ses { display: block !important; }
-  </style>
-</noscript>
 
-        </div>
-  
-  
-  </div>
+
   </div>
 
   
   </div>
 </div>
-      </div>
-    </div>
-    <div class="small-12 large-4 columns">
-      <div class="dynamic-content">
-        <div class="inside"><div class="panel-pane pane-views pane-oikotie-articles-view" >
+  </div>
+  <div class="large-8 columns">
+    <div class="inside"><div class="panel-pane pane-views-panes pane-oikotie-job-view-metadata" >
   
       
   
   <div class="pane-content">
-      <div class="sidebar">
-    <h4>Suosittelemme</h4>
-    <div class="panel2 smallertext simple-list">
-      <ul>
-          <li>
-  <a href="/tyontekijalle/artikkelit/10-vinkkia-uuteen-tyohon">10 vinkkiä uuteen työhön</a>
-</li>
-  <li>
-  <a href="/tyontekijalle/artikkelit/realistinen-palkkatoive-tekee-vaikutuksen">Realistinen palkkatoive tekee vaikutuksen</a>
-</li>
-  <li>
-  <a href="/tyontekijalle/artikkelit/viihtyminen-on-yhteinen-tavoite">Viihtyminen on yhteinen tavoite</a>
-</li>
-  <li>
-  <a href="/tyontekijalle/artikkelit/sosiaalinen-media-tyonhaussa">Sosiaalinen media työnhaussa</a>
-</li>
-        <li>
-          <a style="color:#233777;" href="/tyontekijalle/artikkelit"><b><b>Lue lisää artikkeleita</b></b></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  </div>
+    
 
-  
-  </div>
-<div class="panel-separator"></div><div class="panel-pane pane-custom pane-2" >
-  
-      
-  
-  <div class="pane-content">
-    <a href="http://tyopaikat.oikotie.fi/kesatyo"><img alt="Kesätyöt" src="http://ot11.snstatic.fi/sites/default/files/styles/asset_image_full/public/assets/images/kesapaikat-banneri.jpg?itok=_2UmdOrm" style="border:none; margin-bottom: 1em;" /> </a>
-  </div>
 
-  
-  </div>
-<div class="panel-separator"></div><div class="panel-pane pane-custom pane-3" >
-  
-      
-  
-  <div class="pane-content">
-    <div class="sidebar">
-<h4>Kuukauden kilpailu</h4>
-<a href="/kuukauden-kilpailu?utm_source=tyopaikat.oikotie.fi&utm_medium=tf-desktop&utm_content=etusivu&utm_campaign=tf-otty"><img alt="image" width=100% src="http://ot11.snstatic.fi/sites/default/files/assets/images/kalenteri.jpg" /></a>
-<div class="panel2">
-<p>Kerro, miten asetat palkkatoiveesi työnhakutilanteessa ja voita 100 euron S-ryhmän lahjakortti!</p>
+    <div>
+    <div vocab="http://schema.org/" typeof="schema:JobPosting" resource="/avoimet-tyopaikat/designer-software-applications-testing/785584">
 
-<p><strong><a href="/kuukauden-kilpailu?utm_source=tyopaikat.oikotie.fi&utm_medium=tf-desktop&utm_content=etusivu&utm_campaign=tf-otty"><span style="color:#233777;">Osallistu kilpailuun</span></a></strong></p>
-</div>
+  <span rel="schema:url" href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/designer-software-applications-testing/785584"></span>
+
+  <span property="schema:title" content="Designer, Software Applications Testing"></span>
+
+    <span rel="schema:image" href="http://ot11.snstatic.fi/sites/default/files/styles/logo/public/imagecache/external/8c39885da12f052533309bbf7c4022b0.jpg?itok=enccPz_g"></span>
+    <span property="schema:description" content="We are now looking for the following professional
+Designer, Software Applications Testing
+Your task will mainly be focused on testing of Web and mobile..."></span>
+
+  <span property="employmentType" content="Kokopäiväinen"></span>
+
+  <span property="schema:datePosted" content="2014-05-19T11:00:58+03:00"></span>
+  <span property="schema:hiringOrganization" typeof="Organization">
+    <span property="schema:name" content="Polar Electro Oy"></span>
+  </span>
+
+  <span property="schema:jobLocation" typeof="schema:Place">
+    <span property="schema:address" typeof="schema:PostalAddress">
+            <span property="schema:addressLocality" content="Jyväskylä, Kempele"></span>
+          </span>
+  </span>
+
 </div>  </div>
 
+
+
+
+
+  </div>
+
   
   </div>
-<div class="panel-separator"></div><div class="panel-pane pane-custom pane-4" >
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-oikotie-job-view-main-block" >
   
-      
   
   <div class="pane-content">
-    <div class="sidebar">
-<h4>Toukokuun uratarina</h4>
-<a href="http://tyopaikat.oikotie.fi/tyontekijalle/artikkelit/ajat-muuttuvat-asenne-ratkaisee?utm_source=tyopaikat.oikotie.fi&utm_medium=tf-desktop&utm_content=etusivu&utm_campaign=tf-otty"><img alt="image" src="http://ot11.snstatic.fi/sites/default/files/assets/images/uratarina_nosto_marjo_2014_05.jpg" /></a>
+    
 
-<div class="panel2">
-<p>Toukokuun uratarina: Tärkeintä on pysyä avoimena uudelle ja etsiä tietoisesti omaa suuntaansa</p>
 
-<p><a class="cta1" href="http://tyopaikat.oikotie.fi/tyontekijalle/artikkelit/ajat-muuttuvat-asenne-ratkaisee?utm_source=tyopaikat.oikotie.fi&utm_medium=tf-desktop&utm_content=etusivu&utm_campaign=tf-otty">Lue Marjon uratarina</a></p>
+    <div>
+      <div class="return-link">
+    <a href="/" class="back-link"><i class="foundicon-enclosed-left-arrow left"></i>Takaisin</a>
+  </div>
+
+<div class="job-short-link print-only">
+  <span>Ilmoituksen osoite: http://tyopaikat.oikotie.fi/tyopaikka/785584</span>
 </div>
-</div>  </div>
+
+<div class="job-main-data">
+      <div class="pictures row clearfix">
+              <div class="large-6 columns">
+          <div class="logo logo1"><img typeof="foaf:Image" src="http://ot11.snstatic.fi/sites/default/files/styles/logo_large/public/imagecache/external/8c39885da12f052533309bbf7c4022b0.jpg?itok=EJjfZUey" alt="" /></div>
+        </div>
+                </div>
+  
+  <h1 id="jobTitle">
+    <span class="n">Designer, Software Applications Testing</span><span class="n e"><br></span>
+    <span class="e">Polar Electro Oy</span>
+  </h1>
+
+  <h6 class="time">
+    Julkaistu 19.5.2014  </h6>
 
   
+  <div id="jobDescription">
+    
+    
+<p><strong>We are now looking for the following professional</strong></p>
+<p><strong>Designer, Software Applications Testing</strong></p>
+<p>Your task will mainly be focused on testing of Web and mobile software applications. The work will include test planning, test case creation, test scripting and test execution. You will work in the Verification &amp; Validation team in our Product &amp; Services organization.</p>
+<p>We expect you to have:</p>
+<p>- At least 3 years of experience in testing of Web and mobile applications<br />
+- Knowledge of Agile methods<br />
+- Solid experience in Web and mobile applications test automation and test automation tools<br />
+- Fluent written and spoken English and Finnish</p>
+<p>The position is located at our headquarters in Kempele or in Jyväskylä, Finland.</p>
+<p>For further information please contact Mr. Petri Honkala, tel. +358 (0)8 5202 100. We kindly ask you to send your application with salary request to <a href="mailto:anne.petajajarvi@polar.com">anne.petajajarvi@polar.com</a> by the 25th of May 2014.&nbsp;</p>
+    
   </div>
-<div class="panel-separator"></div><div class="panel-pane pane-block pane-oikotie-blocks-working-life-news-sidebar" >
   
-      
-  
-  <div class="pane-content">
-    <div class="sidebar"><h4>Työelämäuutiset</h4><div class="panel2 smallertext"><div class="simple-list"><ul><li><a href="http://www.iltasanomat.fi/tyoelama/art-1288689154256.html?ref=rss" target="_blank">STTK väläyttää eläkeiän nostoa</a> (Iltasanomat)</li><li><a href="http://www.iltasanomat.fi/tyoelama/art-1288689176543.html?ref=rss" target="_blank">SAK:n Lyly vaatii eläkeindeksien leikkauksen perumista</a> (Iltasanomat)</li><li><a href="http://www.hs.fi/tyoelama/N%C3%A4ill%C3%A4+keinoilla+taltutat+ty%C3%B6kiireen+ja+v%C3%A4lt%C3%A4t+ylity%C3%B6t+/a1399696082515" target="_blank">Näillä keinoilla taltutat työkiireen ja vältät ylityöt </a> (Helsingin Sanomat)</li><li><a href="http://www.hs.fi/tyoelama/Ty%C3%B6el%C3%A4m%C3%A4ss%C3%A4+ei+kannata+noudattaa+s%C3%A4%C3%A4nt%C3%B6j%C3%A4/a1399696050108" target="_blank">Kolumni: Työelämässä ei kannata noudattaa sääntöjä</a> (Helsingin Sanomat)</li><li><a href="http://www.hs.fi/tyoelama/Huumekoiran+nen%C3%A4+kaipaa+lepoa++t%C3%B6it%C3%A4+12+tuntia+p%C3%A4iv%C3%A4ss%C3%A4/a1399696090252" target="_blank">Huumekoiran nenä kaipaa lepoa – töitä 12 tuntia päivässä</a> (Helsingin Sanomat)</li><li><a href="http://www.iltasanomat.fi/tyoelama/art-1288689499864.html?ref=rss" target="_blank">Barona pudotti yt-pommin</a> (Iltasanomat)</li></ul></div></div></div>  </div>
+  <p><a href="mailto:&#97;&#110;&#110;&#101;&#46;&#112;&#101;&#116;&#97;&#106;&#97;&#106;&#97;&#114;&#118;&#105;&#64;&#112;&#111;&#108;&#97;&#114;&#46;&#99;&#111;&#109;" id="oikotie-job-apply" class="cta1 left" rel="nofollow" target="_blank">Hae työpaikkaa</a></p></div>
 
-  
-  </div>
-<div class="panel-separator"></div><div class="panel-pane pane-block pane-oikotie-feature-job-view-closing-jobs" >
-  
-      
-  
-  <div class="pane-content">
-    <div class="sidebar closing-jobs">
-  <h4>Vielä ehdit hakea</h4>
-  <div class="panel2 smallertext simple-list">
+
+  <div class="job-additional-data">
+    <h4 class="clear">Lisätiedot</h4>
     <ul>
-          <li><a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/myyja-suomen-lahikauppa-oy-raahe/771411">Myyjä, Suomen Lähikauppa Oy, Raahe<div class="company">Myyjä, Suomen Lähikauppa Oy, Raahe</div></a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/seurakuntapastorin-viransijaisuus/783360">Seurakuntapastorin viransijaisuus<div class="company">Jyväskylän seurakunta</div></a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/avainasiakasmyyja/781424">Avainasiakasmyyjä <div class="company">Neopost Finland Oy</div></a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/tuotespesialisti/783597">TUOTESPESIALISTI<div class="company">Pfizer</div></a></li>
-        </ul>
+      <li>Ilmoitusnumero: <strong>785584</strong></li>
+      <li>Työsuhde: <strong>Vakituinen työsuhde</strong></li><li>Työn laatu: <strong>Kokopäiväinen</strong></li><li>Sähköposti: <strong> <a href="mailto:&#97;&#110;&#110;&#101;&#46;&#112;&#101;&#116;&#97;&#106;&#97;&#106;&#97;&#114;&#118;&#105;&#64;&#112;&#111;&#108;&#97;&#114;&#46;&#99;&#111;&#109;" rel="nofollow">Lähetä sähköpostia</a></strong></li><li>Sijainti: <strong>Jyväskylä, Kempele</strong></li>    </ul>
   </div>
-</div>
+  <div class="social-share">
+  <ul class="additional-info left">
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_16x16_style">
+      <a class="addthis_button_facebook"><i class="foundicon-social-facebook"></i> Facebook</a>
+      <a class="addthis_button_twitter"><i class="foundicon-social-twitter"></i> Twitter</a>
+      <a class="addthis_button_google_plusone_share"><i class="foundicon-social-google-plus"></i> Google+</a>
+      <a class="addthis_button_linkedin"><i class="foundicon-social-linkedin"></i> LinkedIn</a>
+      <a class="addthis_button_compact"><i class="foundicon-social-chat"></i> Sähköposti jne.</a>
+    </div>
+    <script type="text/javascript">
+      var addthis_config = {
+        ui_language: 'fi',
+        data_track_clickback: false
+      };
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-528c6997636490f0"></script>
+    <!-- AddThis Button END -->
+  </ul>
   </div>
+  </div>
+
+
+
+
+
+<img src="/sites/all/modules/tyopaikat_stat/stat.php?jobId=785584&amp;companyId=67935&amp;channelId=1" alt="" title=""  width="0" height="0" border="0" />  </div>
 
   
   </div>
-<div class="panel-separator"></div><div class="panel-pane pane-block pane-oikotie-feature-facebook-lift-facebook-activity-blue" >
+</div>
+  </div>
+  <div class="large-4 columns">
+    <div class="inside"><div class="panel-pane pane-views-panes pane-oikotie-job-view-employer-info-block" >
   
       
   
   <div class="pane-content">
-    <div class="sidebar fb-lift sidebar-block-blue">
-  <h4>Oikotie Työpaikat Facebookissa</h4>
-  <div class="panel2 smallertext">
-    <div class="simple-list">
-      <ul>
-                <li><a href="https://www.facebook.com/photo.php?fbid=634784153273649&set=a.359588117459922.86867.352163704869030&type=1&relevant_count=1" target="_blank">
-      <img class="fb-lift-img" typeof="foaf:Image" src="http://ot11.snstatic.fi/sites/default/files/styles/some-sidebar-lift/public/imagecache/external/67bc60e654029687426d6e2298b8a360.jpg?itok=KjqROStA" alt="" />      <div class="fb-lift-text">
-        <span class="fb-lift-message">Perjantain gallup: Aiotko äänestää Eurovaaleissa?</span>
-          </div>
-  </a></li>
-                <li><a href="http://www.iltasanomat.fi/tyoelama/art-1288688052564.html?utm_source=FB&utm_medium=fb_postaus&utm_campaign=fb_tyopaikat&cmp=fb_tyopaikat" target="_blank">
-      <img class="fb-lift-img" typeof="foaf:Image" src="http://ot11.snstatic.fi/sites/default/files/styles/some-sidebar-lift/public/imagecache/external/3d1a7a51419298db17a005a9aba77390.jpg?itok=0LFVDZqB" alt="Viina- ja krapulapaljastus Suomen työpaikoilta vetää hiljaiseksi" />      <div class="fb-lift-text">
-        <span class="fb-lift-message">Jo jopas, "tuoreen tutkimuksen mukaan lähes puolessa (47 %) suomalaisissa yrityksissä esiintyy suoranaisia päihdeongelmia". </span>
-            <span class="fb-lift-name">Viina- ja krapulapaljastus Suomen työpaikoilta vetää hiljaiseksi</span>
+    
+
+
+    <div>
+      <div class="sidebar ">
+    <div class="company-info-wrapper">
+            <h4>Polar Electro Oy</h4>
+            
+      
+      <div class="panel2" id="companyDescription">
+        
+        
+<p><strong>Polar is one of the world's top sports training brands. Founded in Finland in 1977, we help anyone who wants to get more from their training, whether they want to run faster, cycle further, lose a few kilos, or win world titles. We have a great line-up of products, apps and services and continue to evolve to offer the best possible experience to the people, teams, schools and clubs who use our products every day, all around the world. <br />
+</strong></p>
+<p><strong>If you join us, you'll be part of an international team in an innovative company with a simple mission: to help people get fitter, faster.</strong></p>
+        
       </div>
-  </a></li>
-              </ul>
-    </div>
-    <div class="fb-follow-us">
-      <a href="https://www.facebook.com/OikotieTyopaikat" target="_blank">
-        <img class="fb-follow-us-img" src="http://ot12.snstatic.fi/sites/all/modules/custom/oikotie_feature_facebook_lift/images/FB-f-Logo__blue_29.png" alt="Facebook"/>
-        <span class="fb-follow-us-text">Seuraa meitä Facebookissa</span>
-      </a>
+      
+      
     </div>
   </div>
-</div>
+  </div>
+
+
+
+
+
   </div>
 
   
   </div>
-<div class="panel-separator"></div><div class="panel-pane pane-block pane-oikotie-blocks-most-viewed-block" >
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-oikotie-job-view-additional-employer-info-panel" >
   
       
   
   <div class="pane-content">
-    <div class="sidebar most-viewed-jobs">
-  <h4>Katsotuimmat</h4>
-  <div class="panel2 smallertext">
-    <div class="simple-list">
-      <ul>
-                  <li><a href="http://tyopaikat.oikotie.fi/tyopaikka/784746">
-  <span class="title">Projektipäällikkö media-alalle</span>
-  <span class="employer">Temp-Team</span>
-</a></li>
-                  <li><a href="http://tyopaikat.oikotie.fi/tyopaikka/784193">
-  <span class="title">SIHTEERI</span>
-  <span class="employer">Suomen Kulttuurirahasto</span>
-</a></li>
-                  <li><a href="http://tyopaikat.oikotie.fi/tyopaikka/784470">
-  <span class="title">MARKKINOINTIKOORDINAATTORI</span>
-  <span class="employer">mySafety Oy</span>
-</a></li>
-                  <li><a href="http://tyopaikat.oikotie.fi/tyopaikka/784797">
-  <span class="title">Viestintäkoordinaattori</span>
-  <span class="employer">Barona</span>
-</a></li>
-              </ul>
-    </div>
+    
+
+
+    <div>
+    <div class="sidebar">
+  <h4>Lisätietoja yrityksestä</h4>
+  <div class="panel2">
+    <p>Oikotien yrityssivu näyttää sinulle perustiedot työnantajasta, viimeisimmät uutiset yrityksistä ja Oikotiellä parhaillaan auki olevat yrityksen muut työpaikat.</p>
+    <p><a href="/yritys/polar-electro-oy/0209911-2">Polar Electro Oy yrityssivu</a></p>
+    <p><a href="/yritys/polar-electro-oy/0209911-2/tyopaikat">Polar Electro Oy kaikki työpaikat</a></p>
   </div>
 </div>  </div>
 
+
+
+
+
+  </div>
+
   
   </div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="content-bottom">
-  <div class="row">
-    <div class="small-12 large-12 columns">
-          </div>
-  </div>
-</div>
-<div class="prefooter prefooter-first">
-  <div class="row">
-    <div class="small-12 large-6 columns"><div class="panel-pane pane-custom pane-1" >
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-oikotie-job-view-additional-employer-info2-panel" >
   
       
   
   <div class="pane-content">
-    <h2>Tietoa työelämästä</h2>
+    
 
+
+  &nbsp;
+
+
+
+
+  </div>
+
+  
+  </div>
+</div>
+  </div>
+</div>
+</div><div class="prefooter prefooter-first">
+  <div class="row">
+    <div class="large-6 columns"><div class="panel-pane pane-views-panes pane-oikotie-job-view-similar-jobs-pane" >
+  
+      
+  
+  <div class="pane-content">
+    <h2>Samankaltaisia ilmoituksia</h2>
 <ul class="no-bullet">
-	<li><a href="/tyontekijalle/palkkalaskuri">Palkkalaskuri</a></li>
-	<li><a href="/tyontekijalle/artikkelit/10-vinkkia-uuteen-tyohon">10 vinkkiä uuteen työhön</a></li>
-	<li><a href="http://tyopaikat.iltasanomat.fi/palkkavertailu">Eri ammattien palkat</a></li>
+    <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/designer-software-applications-testing/783547?pos=otty-similar">Designer, Software Applications Testing, Polar Electro Oy</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/putkiasentaja/785664?pos=otty-similar">Putkiasentaja, Caverion</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/hw-architect/785630?pos=otty-similar">HW Architect, Ericsson</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/it-asiantuntija/785561?pos=otty-similar">IT-asiantuntija, KELA</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/tyonjohtaja-sahkoverkkorakentaminen/785088?pos=otty-similar">Työnjohtaja (sähköverkkorakentaminen), Workbox Henkilöstöpalvelut Oy</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/hosting-palvelujen-asiantuntija-jyvaskylaan/784937?pos=otty-similar">Hosting –palvelujen asiantuntija Jyväskylään, Manpower</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/automaatio-ohjelmoija-automation-programmer/784872?pos=otty-similar">Automaatio-ohjelmoija (Automation Programmer), Siemens Osakeyhtiö</a>  </li>
+  <li>
+    <a href="http://tyopaikat.oikotie.fi/avoimet-tyopaikat/ostaja-intohimona-ostaminen/784766?pos=otty-similar">Ostaja – intohimona ostaminen?, iLOQ Oy </a>  </li>
 </ul>
   </div>
 
   
   </div>
-<div class="panel-separator"></div><div class="panel-pane pane-block pane-oikotie-blocks-popular-search-terms" >
+</div>
+    <div class="large-6 columns"><div class="panel-pane pane-custom pane-1" >
   
-      
+        <h2 class="pane-title">Työkalut</h2>
+    
   
   <div class="pane-content">
-    <div class="block-popular-search-terms">
-  <h2>Suosituimmat hakusanat</h2>
-  <ul class="inline-list">
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Controller&pos=sivukartta">Controller</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Johtaja&pos=sivukartta">Johtaja</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Assistentti&pos=sivukartta">Assistentti</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Markkinointi&pos=sivukartta">Markkinointi</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Turvallisuus&pos=sivukartta">Turvallisuus</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Projektip%C3%A4%C3%A4llikk%C3%B6&pos=sivukartta">Projektipäällikkö</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Energia&pos=sivukartta">Energia</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Marketing&pos=sivukartta">Marketing</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Talousjohtaja&pos=sivukartta">Talousjohtaja</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Sairaanhoitaja&pos=sivukartta">Sairaanhoitaja</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Graafinen&pos=sivukartta">Graafinen</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Ostaja&pos=sivukartta">Ostaja</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Tuotep%C3%A4%C3%A4llikk%C3%B6&pos=sivukartta">Tuotepäällikkö</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Myyntip%C3%A4%C3%A4llikk%C3%B6&pos=sivukartta">Myyntipäällikkö</a></li>
-      </ul>
-</div>  </div>
-
-  
-  </div>
-</div>
-    <div class="small-12 large-6 columns"><div class="panel-pane pane-block pane-oikotie-blocks-browse-jobs" >
-  
-      
-  
-  <div class="pane-content">
-    <div class="block-browse-jobs">
-  <h2>Selaa työpaikkoja</h2>
-  <ul class="inline-list">
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Helsinki&pos=sivukartta">Avoimet työpaikat Helsinki</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Turku&pos=sivukartta">Avoimet työpaikat Turku</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Espoo&pos=sivukartta">Avoimet työpaikat Espoo</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Oulu&pos=sivukartta">Avoimet työpaikat Oulu</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Tampere&pos=sivukartta">Avoimet työpaikat Tampere</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Jyv%C3%A4skyl%C3%A4&pos=sivukartta">Avoimet työpaikat Jyväskylä</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Kuopio&pos=sivukartta">Avoimet työpaikat Kuopio</a></li>
-          <li><a href="http://tyopaikat.oikotie.fi/haku?jq=Vaasa&pos=sivukartta">Avoimet työpaikat Vaasa</a></li>
-        <li><a href="/en/?pos=sivukartta">Are you looking for jobs in finland?</a></li>
-  </ul>
-</div>
-  </div>
-
-  
-  </div>
-</div>
-  </div>
-</div>
-<div class="prefooter prefooter-last hide-for-medium-down">
-  <div class="row">
-    <div class="small-12 large-4 columns"><div class="panel-pane pane-block pane-oikotie-blocks-ko-is-300x300" >
-  
-      
-  
-  <div class="pane-content">
-    <iframe src="" data-original="http://ko.snstatic.fi/ot-is-300/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no" class="lazy-load"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           <noscript>
-                             <iframe src="http://ko.snstatic.fi/ot-is-300/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           </noscript>  </div>
-
-  
-  </div>
-</div>
-    <div class="small-12 large-4 columns"><div class="panel-pane pane-block pane-oikotie-blocks-ko-talsa-300x300" >
-  
-      
-  
-  <div class="pane-content">
-    <iframe src="" data-original="http://ko.snstatic.fi/ot-ts-iframe/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no" class="lazy-load"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           <noscript>
-                            <iframe src="http://ko.snstatic.fi/ot-ts-iframe/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           </noscript>  </div>
-
-  
-  </div>
-</div>
-    <div class="small-12 large-4 columns"><div class="panel-pane pane-block pane-oikotie-blocks-ko-asunnot-300x300" >
-  
-      
-  
-  <div class="pane-content">
-    <iframe src="" data-original="http://ko.snstatic.fi/otas-otty-300/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no" class="lazy-load"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           <noscript>
-                            <iframe src="http://ko.snstatic.fi/otas-otty-300/" width="300" height="300"
-                                   frameborder="0" seamless="seamless" scrolling="no"
-                                   style="border:none;overflow:hidden;width:300px;height:300px"></iframe>
-                           </noscript>  </div>
+    <ul class="no-bullet">
+	<li><a href="/tyontekijalle/palkkalaskuri?pos=otty-tools">Palkkalaskuri</a></li>
+	<li><a href="/tyontekijalle/artikkelit/millainen-on-hyva-tyohakemus?pos=otty-tools">Millainen on hyvä työhakemus</a></li>
+	<li><a href="/tyontekijalle/artikkelit/mika-on-cv?pos=otty-tools">CV-ohjeet</a></li>
+	<li><a href="/tyontekijalle/tyokalut/some-ja-tyoelama?pos=otty-tools">Sosiaalinen media ja työelämä</a></li>
+	<li><a href="/tyontekijalle/artikkelit?pos=otty-tools">Työelämä-artikkelit</a></li>
+</ul>  </div>
 
   
   </div>
@@ -904,20 +440,20 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 </footer>
 
 <!-- Page Bottom -->
-      <noscript>
-      <style type="text/css">
-        .light-backdrop-search { display: none; visibility: hidden; }
-      </style>
-    </noscript>
     <script type='text/javascript'>
     var _frosmo = _frosmo || {};
     _frosmo.origin = '1fd5a185d9fd78a159fdd5bbc92b9b18';
     _frosmo.base = 'inpref.s3.amazonaws.com/';
     (function() { var easy = document.createElement('script'); easy.type = 'text/javascript'; easy.async = true; easy.src = '//' + _frosmo.base + 'frosmo.easy.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(easy, s); }());
-  </script><script type="text/javascript" src="http://ot11.snstatic.fi/sites/default/files/advagg_js/js__0vdKtCxRYVlGJr_CBErg9aI3BQRK5rONbJa_ncCr-aE__s74fzSX1p6etx1nXCMbX6A7VeJNpphlm3IVNtC2gJyE__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.js"></script>
+  </script><script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery("#oikotie-job-apply, #oikotie-job-apply-link").click(function() { jQuery.publish("OikotieJobView.apply.click", 785584); });
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://ot11.snstatic.fi/sites/default/files/advagg_js/js__huKjJYv_AwSsvtIFX-hLAoElGM5Lp9I3kiUJp6oWhtQ__xfnzCLK3qp3chcqXoMdPBh_UZTFT1s4U98T9Trnxg2I__6hfQ1bkXZIVLlwCcPtdvOe-_6VPMMZ_vCG3Pqvher3A.js"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
-jQuery(function() { jQuery(".lazy-load").lazyload(); });jQuery(document).foundation();
+jQuery(document).foundation();
 //--><!]]>
 </script>
 <script type="text/javascript" src="http://ot11.snstatic.fi/sites/all/modules/custom/oikotie_feature_analytics/js/spring-1.6.0.js?n57a0j"></script>
@@ -925,7 +461,7 @@ jQuery(function() { jQuery(".lazy-load").lazyload(); });jQuery(document).foundat
 <!--//--><![CDATA[//><!--
   var sp_e0 = {
     "s":"oikotie",
-    "cp":"tyopaikat/tyopaikat_etusivu",
+    "cp":"tyopaikat/tyopaikat_kohdesivut",
     "url":document.location.href
   };
   spring.c(sp_e0);
@@ -933,7 +469,7 @@ jQuery(function() { jQuery(".lazy-load").lazyload(); });jQuery(document).foundat
 </script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
-var v_sat = {"sit":"otty","cha":"web","cid":"haku","evt":"fro"}
+var v_sat = {"sit":"otty","cha":"web","cid":"avoimet-tyopaikat_designer-software-applications-testing_785584","evt":"content"}
 //--><!]]>
 </script>
 <script type="text/javascript">
@@ -943,11 +479,11 @@ var v_sat = {"sit":"otty","cha":"web","cid":"haku","evt":"fro"}
      if (d[f](b) + 1)for (o = 0, n = d.split(";"), p = n[h]; o < p; o++)m = n[o][f](b), m + 1 && (e = l + unescape(n[o][g](m + b[h])));
      a += k + "_t=" + +(new Date) + k + "c=" + (c.characterSet || c.defaultCharset || "") + "&c8=" + r(c.title) + e + "&c7=" + r(c.URL) + "&c9=" + r(c.referrer), a[h] > i && a[f](l) > 0 && (j = a[g](0, i - 8).lastIndexOf(l), a = (a[g](0, j) + k + "cut=" + r(a[g](j + 1)))[g](0, i)), c.images ? (m = new Image, q.ns_p || (ns_p = m), m.src = a) : c.write("<", "p", "><", 'img src="', a, '" height="1" width="1" alt="*"', "><", "/p", ">")
    }
-   udm_('http' + (document.location.href.charAt(4) == 's' ? 's://sb' : '://b') + '.scorecardresearch.com/b?c1=2&c2=6035634&ns_site=tyopaikat-oikotie&name=etusivu');
+   udm_('http' + (document.location.href.charAt(4) == 's' ? 's://sb' : '://b') + '.scorecardresearch.com/b?c1=2&c2=6035634&ns_site=tyopaikat-oikotie&name=avoimet-tyopaikat.designer-software-applications-testing.785584.page');
 //--><!]]>
 </script>
   <script type="text/javascript">
     document.write('<scr'+'ipt type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|969.1|2179776|0|-1|ADTECH;cookie=info;alias=ot_tyopaikat_btn20_rt;loc=100;target=_blank;misc='+new Date().getTime()+'"></scri'+'pt>');
   </script>
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"74c82cefeb","applicationID":"2442536","transactionName":"NV1bZBFTCkUDVUFYXwwXeFMXWwtYTUZUVlU9VVheAlUBRD1GVFZVPV1BVQBHEFM=","queueTime":0,"applicationTime":679,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"jserror.newrelic.com","agent":"js-agent.newrelic.com\/nr-400.min.js"}</script></body>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"74c82cefeb","applicationID":"2442536","transactionName":"NV1bZBFTCkUDVUFYXwwXeFMXWwtYTUZUVlU9VVheAlUBRD1GVFZVPV1BVQBHEFM=","queueTime":0,"applicationTime":1150,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"jserror.newrelic.com","agent":"js-agent.newrelic.com\/nr-400.min.js"}</script></body>
 </html>
