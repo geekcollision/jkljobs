@@ -2,6 +2,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
+var moment = require('moment');
 
 
 module.exports = main;
@@ -38,7 +39,7 @@ function scrape(data) {
         begins: $('#tyoAlkaaTekstiYhdistetty').text(),
         type: $('#tyoaikatekstiYhdistetty').text(),
         duration: $('#tyonKestoTekstiYhdistetty').text(),
-        added: $('#ilmoituspaivamaarateksti').text()
+        added: moment($('#ilmoituspaivamaarateksti').text(), 'DD-MM-YYYY')
     };
 }
 

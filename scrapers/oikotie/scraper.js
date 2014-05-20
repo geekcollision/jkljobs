@@ -2,6 +2,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
+var moment = require('moment');
 
 
 module.exports = main;
@@ -38,6 +39,6 @@ function scrape(data) {
         begins: '',
         type: $additional.find('li').eq(2).find('strong').text(),
         duration: '',
-        added: $('.time').text().split('Julkaistu').slice(-1)[0].trim() // TODO: parse
+        added: moment($('.time').text().split('Julkaistu').slice(-1)[0].trim(), 'DD-MM-YYYY')
     };
 }
