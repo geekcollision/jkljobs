@@ -13,7 +13,6 @@ var tasks = require('./tasks');
 
 main();
 
-
 function main() {
     taskist(config.tasks, tasks, {
         instant: function(err) {
