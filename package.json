@@ -15,6 +15,7 @@
     "annomath": "0.2.0",
     "annostring": "0.2.2",
     "async": "0.2.9",
+    "change-case": "^2.1.1",
     "cheerio": "0.12.4",
     "express": "3.4.7",
     "feedparser": "^0.16.6",
