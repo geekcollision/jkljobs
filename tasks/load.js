@@ -12,7 +12,6 @@ var Job = require('../schemas').Job;
 
 
 module.exports = function(cb) {
-    // TODO
     async.each([
         {
             name: 'mol',
