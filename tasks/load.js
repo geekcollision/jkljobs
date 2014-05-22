@@ -27,6 +27,12 @@ module.exports = function(cb) {
             options: {
                 index: 'http://tyopaikat.oikotie.fi/?toimiala[104]=104&sijainti[11]=11'
             }
+        },
+        {
+            name: 'vierityspalkki',
+            options: {
+                index: 'http://vierityspalkki.fi/tyopaikat/'
+            }
         }
     ], loadTarget, cb);
 };
