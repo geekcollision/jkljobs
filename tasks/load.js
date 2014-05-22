@@ -39,6 +39,12 @@ module.exports = function(cb) {
             options: {
                 index: 'http://www.eilakaisla.fi/avoimet-tyopaikat?alue=13&haku=IT'
             }
+        },
+        {
+            name: 'duunitori',
+            options: {
+                index: 'http://duunitori.fi/tyopaikat/?haku=it&alue=jyv%C3%A4skyl%C3%A4'
+            }
         }
     ], loadTarget, cb);
 };
@@ -60,6 +66,10 @@ function loadTarget(o, cb) {
             cb(err);
         },
         onResult: function(o, job, cb) {
+            if(!job) {
+                return cb(new Error('Failed to get valid result for ' + o.name));
+            }
+
             job.company = normalizeCompany(job.company);
 
             job.sources = job.sources || {};
