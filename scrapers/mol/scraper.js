@@ -39,7 +39,7 @@ function scrape(data) {
         begins: $('#tyoAlkaaTekstiYhdistetty').text(),
         type: $('#tyoaikatekstiYhdistetty').text(),
         duration: $('#tyonKestoTekstiYhdistetty').text(),
-        added: moment($('#ilmoituspaivamaarateksti').text(), 'DD-MM-YYYY')
+        added: moment($('#ilmoituspaivamaarateksti').text(), 'DD-MM-YYYY').utc().format()
     };
 }
 

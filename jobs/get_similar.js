@@ -26,8 +26,10 @@ module.exports = function(originalJob, cb) {
             var d2 = job.description.replace(/\n/g, '').replace(/-/g, '').replace(/ /g, '');
             var sameChars = getSameAmount(d1, d2);
 
-            cb(sameChars / d1.length >= 0.75);
-        }, cb);
+            cb(sameChars / d1.length >= 0.65);
+        }, function(results) {
+            cb(null, results);
+        });
     });
 };
 

@@ -5,14 +5,17 @@ var path = require('path');
 
 var async = require('async');
 var changeCase = require('change-case');
+var is = require('annois');
 var sugar = require('object-sugar');
 var spyder = require('spyder');
 
+var getSimilar = require('../jobs/get_similar');
 var Job = require('../schemas').Job;
 
 
 module.exports = function(cb) {
-    async.each([
+    // avoid race condition at `getSimilar` by running these in series
+    async.eachSeries([
         {
             name: 'mol',
             options: {
@@ -47,20 +50,21 @@ function loadTarget(o, cb) {
         onResult: function(o, job, cb) {
             job.company = normalizeCompany(job.company);
 
-            sugar.getOrCreate(Job, {
-                gid: job.gid
-            }, function(err, d) {
+            job.sources = job.sources || {};
+            job.sources[name] = job.url; // XXX: pass this via spyder as param?
+            delete job.url; // XXX: fix object-sugar update
+
+            getSimilar(job, function(err, jobs) {
                 if(err) {
                     return cb(err);
                 }
 
-                job.sources = job.sources || {};
-
-                job.sources[name] = job.url; // XXX: pass this via spyder as param?
-
-                delete job.url;
-
-                sugar.update(Job, d._id, job, cb);
+                if(jobs.length) {
+                    mergeJobs(job, jobs, cb);
+                }
+                else {
+                    updateJob(job, cb);
+                }
             });
         },
         onFinish: function() {
@@ -83,6 +87,35 @@ function normalizeCompany(str) {
     }
 
     return str;
+}
+
+function mergeJobs(job, jobs, cb) {
+    var mergedJob = extend({}, job);
+
+    jobs.forEach(function(job) {
+        Object.keys(job).forEach(function(k) {
+            if(is.object(mergedJob[k])) {
+                mergedJob[k] = extend(mergedJob[k], job[k]);
+            }
+            else {
+                mergedJob[k] = job[k] || mergedJob[k];
+            }
+        });
+    });
+
+    updateJob(mergedJob, cb);
+}
+
+function updateJob(job, cb) {
+    sugar.getOrCreate(Job, {
+        gid: job.gid
+    }, function(err, d) {
+        if(err) {
+            return cb(err);
+        }
+
+        sugar.update(Job, d._id, job, cb);
+    });
 }
 
 function extend(a, b) {

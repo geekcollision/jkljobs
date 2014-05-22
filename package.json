@@ -12,6 +12,7 @@
     "start": "node ./serve.js"
   },
   "dependencies": {
+    "annois": "^0.3.0",
     "annomath": "0.2.0",
     "annostring": "0.2.2",
     "annozip": "^0.2.3",
