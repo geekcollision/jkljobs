@@ -24,5 +24,6 @@ function tests() {
         assert.equal(res.gid, 'vierityspalkki10130');
         assert.equal(res.title, 'Web Developer x 2');
         assert.equal(res.company, 'Media Cabinet Oy');
+        assert.equal(res.added, '2014-05-06T21:00:00+00:00');
     });
 }
