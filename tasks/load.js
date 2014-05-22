@@ -33,6 +33,12 @@ module.exports = function(cb) {
             options: {
                 index: 'http://vierityspalkki.fi/tyopaikat/'
             }
+        },
+        {
+            name: 'eilakaisla',
+            options: {
+                index: 'http://www.eilakaisla.fi/avoimet-tyopaikat?alue=13&haku=IT'
+            }
         }
     ], loadTarget, cb);
 };
@@ -82,6 +88,10 @@ function loadTarget(o, cb) {
 }
 
 function normalizeCompany(str) {
+    if(!str) {
+        return;
+    }
+
     var oyIndex = str.indexOf('Oy');
 
     if(oyIndex > 0) {
