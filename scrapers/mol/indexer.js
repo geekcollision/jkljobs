@@ -7,7 +7,7 @@ var FeedParser = require('feedparser');
 
 
 module.exports = function(o, cb) {
-    var req = request(o.feed, {timeout: 10000, pool: false});
+    var req = request(o.index, {timeout: 10000, pool: false});
     req.setMaxListeners(50);
     req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36')
        .setHeader('accept', 'text/html,application/xhtml+xml');
