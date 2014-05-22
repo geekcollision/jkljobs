@@ -11,43 +11,24 @@ var spyder = require('spyder');
 
 var getSimilar = require('../jobs/get_similar');
 var Job = require('../schemas').Job;
+var sources = require('../config').sources;
 
 
 module.exports = function(cb) {
     // avoid race condition at `getSimilar` by running these in series
-    async.eachSeries([
-        {
-            name: 'mol',
-            options: {
-                index: 'http://www.mol.fi/tyopaikat/tyopaikkatiedotus/haku/tyopaikat.rss?ilmoitettuPvm=1&hakusana=&vuokrapaikka=---&alueet=Jyv%C3%A4skyl%C3%A4%2C+&valitutAmmattialat=25&lang=fi'
-            }
-        },
-        {
-            name: 'oikotie',
-            options: {
-                index: 'http://tyopaikat.oikotie.fi/?toimiala[104]=104&sijainti[11]=11'
-            }
-        },
-        {
-            name: 'vierityspalkki',
-            options: {
-                index: 'http://vierityspalkki.fi/tyopaikat/'
-            }
-        },
-        {
-            name: 'eilakaisla',
-            options: {
-                index: 'http://www.eilakaisla.fi/avoimet-tyopaikat?alue=13&haku=IT'
-            }
-        },
-        {
-            name: 'duunitori',
-            options: {
-                index: 'http://duunitori.fi/tyopaikat/?haku=it&alue=jyv%C3%A4skyl%C3%A4'
-            }
-        }
-    ], loadTarget, cb);
+    async.eachSeries(parseSources(sources), loadTarget, cb);
 };
+
+function parseSources(sources) {
+    return Object.keys(sources).map(function(k) {
+        return {
+            name: k,
+            options: {
+                index: sources[k]
+            }
+        };
+    });
+}
 
 function loadTarget(o, cb) {
     var name = o.name;
