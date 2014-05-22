@@ -1,27 +1,11 @@
 'use strict';
 
-var request = require('request');
 var cheerio = require('cheerio');
 var moment = require('moment');
 
 
-module.exports = main;
-
-function main(o, url, cb) {
-    request.get(url, function(err, res, body) {
-        if(err) {
-            return cb(err);
-        }
-
-        var result = scrape(body);
-
-        result.url = url;
-
-        cb(null, result);
-    });
-}
-
-main.scrape = scrape;
+module.exports = require('../utils/scraper')(scrape);
+module.exports.scrape = scrape;
 
 function scrape(data) {
     var $ = cheerio.load(data);
