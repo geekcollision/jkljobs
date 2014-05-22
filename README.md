@@ -1,6 +1,6 @@
 # jkljobs
 
-This API scrapes IT jobs of Jyväskylä and provides access to them through a simple to use API. Currently it uses mol and Oikotie as data sources.
+This API scrapes IT jobs of Jyväskylä from a variety of sources and provides access to them through a simple to use API.
 
 ## Schema
 
