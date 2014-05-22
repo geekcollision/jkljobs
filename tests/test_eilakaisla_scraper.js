@@ -25,8 +25,5 @@ function tests() {
         assert.equal(res.title, 'Ohjelmistosuunnittelija/ -testaaja');
         assert.equal(res.type, 'Toistaiseksi voimassa oleva');
         assert.equal(res.added, '2014-05-19T21:00:00+00:00');
-        /*
-        assert.equal(res.added, '2014-05-06T21:00:00+00:00');
-        */
     });
 }
