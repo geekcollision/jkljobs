@@ -13,11 +13,11 @@ function main(o, url, cb) {
             return cb(err);
         }
 
-        var d = scrape(body);
+        var result = scrape(body);
 
-        d.link = url;
+        result.url = url;
 
-        cb(null, d);
+        cb(null, result);
     });
 }
 

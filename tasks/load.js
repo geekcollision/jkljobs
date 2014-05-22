@@ -54,6 +54,12 @@ function loadTarget(o, cb) {
                     return cb(err);
                 }
 
+                job.sources = job.sources || {};
+
+                job.sources[name] = job.url; // XXX: pass this via spyder as param?
+
+                delete job.url;
+
                 sugar.update(Job, d._id, job, cb);
             });
         },
