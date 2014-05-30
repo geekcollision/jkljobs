@@ -1,5 +1,7 @@
 'use strict';
 
+require('array.prototype.findindex');
+
 var cheerio = require('cheerio');
 var moment = require('moment');
 
@@ -9,12 +11,13 @@ module.exports.scrape = scrape;
 
 function scrape(data) {
     var $ = cheerio.load(data);
-    var parts = $('h3').text().split(',');
+    var h3text = $('h3').text();
+    var parts = h3text.split(',');
 
     return {
         title: parts[0],
         description: $('h3').next().text().trim(),
-        company: getCompany(parts),
+        company: getCompany(h3text, parts),
         gid: 'mol' + $('#ilmoitusnumero').text(),
         contact: $('#yhteystiedot').text(),
         address: $('#tyopaikanOsoite').text(),
@@ -27,9 +30,15 @@ function scrape(data) {
     };
 }
 
-function getCompany(parts) {
-    if(parts.slice(-1)[0] === parts.slice(-2)[0]) {
-        return parts.slice(-3)[0].trim();
+function getCompany(text, parts) {
+    var city = parts.slice(-1)[0];
+
+    if(text.match(new RegExp(city, 'g')).length > 1) {
+        var idx = parts.findIndex(function(e) {
+            return e === city;
+        });
+
+        return parts[idx - 1].trim();
     }
 
     if(parts.length > 3) {
