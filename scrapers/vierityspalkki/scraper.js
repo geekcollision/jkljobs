@@ -19,7 +19,17 @@ function scrape(data) {
         title: title,
         company: company,
         gid: 'vierityspalkki' + $('article.post').attr('id').split('-').slice(1).join(''),
-        description: $data.find('p').text(),
+        description: getDescription($, $data),
         added: moment($('.info time').text(), 'DD-MM-YYYY').utc().format()
     };
+}
+
+function getDescription($, $data) {
+    var ret = [];
+
+    $data.find('p').each(function(i, e) {
+        ret.push($(e).text());
+    });
+
+    return ret.join('\n').trim();
 }
