@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+require('log-timestamp');
+
 var express = require('express');
 var rest = require('rest-sugar');
 var sugar = require('object-sugar');
