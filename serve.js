@@ -16,13 +16,13 @@ var tasks = require('./tasks');
 main();
 
 function main() {
+    serve();
+
     taskist(config.tasks, tasks, {
         instant: function(err) {
             if(err) {
                 return console.error(err);
             }
-
-            serve();
         }
     });
 }
