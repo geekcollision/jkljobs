@@ -22,8 +22,8 @@ module.exports = function(originalJob, cb) {
                 return cb();
             }
 
-            var d1 = description.replace(/\n/g, '').replace(/-/g, '').replace(/ /g, '');
-            var d2 = job.description.replace(/\n/g, '').replace(/-/g, '').replace(/ /g, '');
+            var d1 = trim(description);
+            var d2 = trim(job.description);
             var sameChars = getSameAmount(d1, d2);
 
             cb(sameChars / d1.length >= 0.65);
@@ -31,6 +31,15 @@ module.exports = function(originalJob, cb) {
             cb(null, results);
         });
     });
+
+    function trim(str) {
+        return str.
+            replace(/\n/g, '').
+            replace(/-/g, '').
+            replace(/ /g, '').
+            replace(/\t/g, '').
+            replace(/•/g, '');
+    }
 };
 
 function getSameAmount(a, b) {

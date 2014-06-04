@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+var assert = require('assert');
+
 var async = require('async');
 var sugar = require('object-sugar');
 
@@ -29,6 +31,11 @@ function main() {
 }
 
 function tests() {
+    test1();
+    test2();
+}
+
+function test1() {
     sugar.getAll(Job, {gid: 'mol8473201'}, function(err, job) {
         if(err) {
             return console.error(err);
@@ -39,7 +46,23 @@ function tests() {
                 return console.error(err);
             }
 
-            console.log('data', similar);
+            assert.equal(similar.length, 1);
+        });
+    });
+}
+
+function test2() {
+    sugar.getAll(Job, {gid: 'vierityspalkki10325'}, function(err, job) {
+        if(err) {
+            return console.error(err);
+        }
+
+        getSimilar(job[0], function(err, similar) {
+            if(err) {
+                return console.error(err);
+            }
+
+            assert.equal(similar.length, 1);
         });
     });
 }
