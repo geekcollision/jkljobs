@@ -238,40 +238,6 @@
     "link": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8444821"
   },
   {
-    "gid": "mol8442097",
-    "_id": "gkmrPQZtR",
-    "created": "2014-05-20T09:38:02.958Z",
-    "title": "Front-end developers",
-    "description": "Experis is the global leader in professional resourcing and project based workforce solutions. We attract, assess and place specialist professional talent, connecting the passion of individuals with the ambition of business. At Experis IT we specialize in skilled IT search and solutions and deliver high-demand talent for mission-critical positions to clients in over 50 countries. Experis is part of ManpowerGroup, the world leader in innovative workforce solutions \n \nOur global software and service customer company is looking for Front End developers for different projects. \n\nStarting day, content of the project and duration of the projects varies case by case basis.\n\nWe are looking for \n- HTML5, \n- Javascript or\n- Qt knowledge\n\nLocations\n- Helsinki\n- Tampere or\n- Jyväskylä\n\nWe are interested in multi-level know-how, from entry level to expert level. \n\nYou can also offer your service through your own company as a subcontractor.\n\nInterested? Register your CV in English by pressing button \"Hae-Apply\" on our website www.experis.fi",
-    "company": "Experis",
-    "contact": "Tapani Aittoniemi, tapani.aittoniemi@manpower.fi",
-    "address": "40100 JYVÄSKYLÄ",
-    "salary": "",
-    "experience": "1-5 vuotta",
-    "begins": "sopimuksen mukaan",
-    "type": "kokoaikatyö",
-    "duration": "3 - 6 kk",
-    "added": "2014-04-01T21:00:00.000Z",
-    "link": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8442097"
-  },
-  {
-    "gid": "mol8441813",
-    "_id": "x1ErPm-KA",
-    "created": "2014-05-20T09:38:03.037Z",
-    "title": "Back-end developers",
-    "description": "Experis is the global leader in professional resourcing and project based workforce solutions. We attract, assess and place specialist professional talent, connecting the passion of individuals with the ambition of business. At Experis IT we specialize in skilled IT search and solutions and deliver high-demand talent for mission-critical positions to clients in over 50 countries. Experis is part of ManpowerGroup, the world leader in innovative workforce solutions.\n\nOur global software and service customer company is looking for Back End developers for different projects. \n\nStarting day, content of the project and duration of the projects varies case by case basis.\n\nWe are looking for \n- Java EE \n- Spring or \n- Liferay developers\n\nLocations\n- Helsinki\n- Tampere or\n- Jyväskylä\n\nWe are interested in multi-level know-how, from entry level to expert level. \n\nYou can also offer your service through your own company as a subcontractor.\n\nInterested? Register your CV in English by pressing button \"Hae-Apply\" on our website www.experis.fi",
-    "company": "Experis",
-    "contact": "Tapani Aittoniemi, tapani.aittoniemi@manpower.fi",
-    "address": "40100 JYVÄSKYLÄ",
-    "salary": "",
-    "experience": "",
-    "begins": "sopimuksen mukaan",
-    "type": "kokoaikatyö",
-    "duration": "3 - 6 kk",
-    "added": "2014-03-31T21:00:00.000Z",
-    "link": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8441813"
-  },
-  {
     "gid": "mol8367068",
     "_id": "gJBBwQWK0",
     "created": "2014-05-20T09:38:03.130Z",
@@ -487,6 +453,39 @@
     "added": "2014-05-27T00:00:00+00:00",
     "sources": {
       "vierityspalkki": "http://vierityspalkki.fi/tyopaikat/verkkokauppakehittaja/"
+    }
+  },
+  {
+    "gid": "mol8481303",
+    "_id": "e1tU0ZHHyg",
+    "created": "2014-06-04T06:15:50.738Z",
+    "title": "Java EE kehittäjä ja/tai testaaja",
+    "description": "Experis™ on johto- ja asiantuntijatason rekrytointi- ja projektiratkaisuihin erikoistunut kansainvälinen yritys. Luomme uusia ura- ja kasvumahdollisuuksia osaaville yksilöille ja autamme asiakkaitamme saavuttamaan omat tavoitteensa nopeammin. Experis IT on erikoistunut IT-alan osaajiin. Vuosittain etsimme asiakkaidemme avainpaikoille tuhansia alansa parhaita täsmä- ja erityisosaajia, esimiehiä ja johtajia. Experis on osa ManpowerGroupia.\r\n\r\n\r\nTyö tapahtuu asiakkaan tiloissa Jyväskylässä, aloitus heti.\r\n\r\nAlla listaus toivottavasta osaamisesta\r\n- OSGi bundled components (Apache Karaf platform)\r\n- Using OSGi declarative services\r\n- JPA (persistence, eclipseLink impl)\r\n- Apache Camel (routing and mediation)\r\n- JAXB XML beans.\r\n- Active MQ messaging\r\n- Angular JS (Frontend, singlepage app)\r\n- JAX-RS (Jersey impl. Rest-apis)\r\n- Apache Shiro (Authentication and authrorization)\r\n- EDA (Event Driver Architecture design)\r\n\r\n\r\nJos sinulta löytyy tarvittavaa osaamista ja olet valmis työskentelyyn on-site Jyväskylässä niin lähetä minulle tähän hakuun muokattu CV, palkkatoiveesi ja mahdollinen aloitus päivämäärä.\r\n\r\nYstävällisin terveisin, tapani.aittoniemi@manpower.fi",
+    "company": "Experis",
+    "contact": "tapani.aittoniemi@manpower.fi",
+    "address": "40100 JYVÄSKYLÄ",
+    "salary": "",
+    "experience": "1-5 vuotta",
+    "begins": "Heti",
+    "type": "kokoaikatyö",
+    "duration": "6 - 12 kk",
+    "added": "2014-05-26T00:00:00+00:00",
+    "sources": {
+      "mol": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8481303"
+    }
+  },
+  {
+    "gid": "duunitori1306046",
+    "_id": "lJuEezSSJx",
+    "created": "2014-06-04T06:16:38.664Z",
+    "title": "Java EE kehittäjä ja/tai testaaja",
+    "company": "Experis",
+    "description": "\r\nExperis™ on johto- ja asiantuntijatason rekrytointi- ja projektiratkaisuihin erikoistunut kansainvälinen yritys. Luomme uusia ura- ja kasvumahdollisuuksia osaaville yksilöille ja autamme asiakkaitamme saavuttamaan omat tavoitteensa nopeammin. Experis IT on erikoistunut IT-alan osaajiin. Vuosittain etsimme asiakkaidemme avainpaikoille tuhansia alansa parhaita täsmä- ja erityisosaajia, esimiehiä ja johtajia. Experis on osa ManpowerGroupia. \r\n\r\n\r\nTyö tapahtuu asiakkaan tiloissa Jyväskylässä, aloitus heti. \r\n\r\nAlla listaus toivottavasta osaamisesta \r\n- OSGi bundled components (Apache Karaf platform) \r\n- Using OSGi declarative services \r\n- JPA (persistence, eclipseLink impl) \r\n- Apache Camel (routing and mediation) \r\n- JAXB XML beans. \r\n- Active MQ messaging \r\n- Angular JS (Frontend, singlepage app) \r\n- JAX-RS (Jersey impl. Rest-apis) \r\n- Apache Shiro (Authentication and authrorization) \r\n- EDA (Event Driver Architecture design) \r\n\r\n\r\nJos sinulta löytyy tarvittavaa osaamista ja olet valmis työskentelyyn on-site Jyväskylässä niin lähetä minulle tähän hakuun muokattu CV, palkkatoiveesi ja mahdollinen aloitus päivämäärä. \r\n\r\nYstävällisin terveisin, tapani.aittoniemi@manpower.fi \r\n",
+    "added": "2014-05-26T00:00:00+00:00",
+    "type": "kokoaikatyö",
+    "address": "40100 JYVÄSKYLÄ",
+    "sources": {
+      "duunitori": "http://duunitori.fi/tyopaikat/tyo/java-ee-kehittaja-jatai-testaaja-1306046"
     }
   }
 ]

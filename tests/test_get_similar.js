@@ -31,8 +31,9 @@ function main() {
 }
 
 function tests() {
-    test1();
-    test2();
+    //test1();
+    //test2();
+    test3();
 }
 
 function test1() {
@@ -53,6 +54,22 @@ function test1() {
 
 function test2() {
     sugar.getAll(Job, {gid: 'vierityspalkki10325'}, function(err, job) {
+        if(err) {
+            return console.error(err);
+        }
+
+        getSimilar(job[0], function(err, similar) {
+            if(err) {
+                return console.error(err);
+            }
+
+            assert.equal(similar.length, 1);
+        });
+    });
+}
+
+function test3() {
+    sugar.getAll(Job, {gid: 'mol8481303'}, function(err, job) {
         if(err) {
             return console.error(err);
         }

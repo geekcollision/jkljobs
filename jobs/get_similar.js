@@ -34,8 +34,10 @@ module.exports = function(originalJob, cb) {
 
     function trim(str) {
         return str.
+            replace(/\r/g, '').
             replace(/\n/g, '').
             replace(/-/g, '').
+            replace(/–/g, '').
             replace(/ /g, '').
             replace(/\t/g, '').
             replace(/•/g, '');
