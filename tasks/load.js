@@ -11,21 +11,21 @@ var spyder = require('spyder');
 
 var getSimilar = require('../jobs/get_similar');
 var Job = require('../schemas').Job;
-var sources = require('../config').sources;
+var config = require('../config');
 
 
 module.exports = function(cb) {
     // avoid race condition at `getSimilar` by running these in series
-    async.eachSeries(parseSources(sources), loadTarget, cb);
+    async.eachSeries(parseSources(config.options || {}, config.sources), loadTarget, cb);
 };
 
-function parseSources(sources) {
+function parseSources(options, sources) {
     return Object.keys(sources).map(function(k) {
         return {
             name: k,
-            options: {
+            options: extend(options, {
                 index: sources[k]
-            }
+            })
         };
     });
 }

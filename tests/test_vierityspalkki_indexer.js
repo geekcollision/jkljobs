@@ -4,8 +4,9 @@
 var assert = require('assert');
 var fs = require('fs');
 
-var scrape = require('../scrapers/vierityspalkki/indexer').scrape;
-
+var scrape = require('../scrapers/vierityspalkki/indexer').scrape.bind(null, {
+    location: 'Jyväskylä'
+});
 
 tests();
 

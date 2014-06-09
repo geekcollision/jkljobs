@@ -12,7 +12,7 @@ function main(o, cb) {
         form: {
             'per_page': 100,
             show: 'list',
-            'job_location': 'Jyväskylä'
+            'job_location': o.location
         },
         headers: {
             'Origin': 'http://it-ala.uranus.fi',

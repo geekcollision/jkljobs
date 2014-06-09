@@ -12,20 +12,20 @@ function main(o, cb) {
             return cb(err);
         }
 
-        cb(null, scrape(body));
+        cb(null, scrape(o, body));
     });
 }
 
 main.scrape = scrape;
 
-function scrape(d) {
+function scrape(o, d) {
     var $ = cheerio.load(d);
     var ret = [];
 
     $('.post-type-vp-job').each(function(i, e) {
         var $e = $(e);
 
-        if($e.find('dd:contains("Jyväskylä")').length) {
+        if($e.find('dd:contains("' + o.location + '")').length) {
             ret.push($e.find('h2 a').attr('href'));
         }
     });
