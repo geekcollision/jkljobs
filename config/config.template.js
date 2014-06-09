@@ -9,6 +9,7 @@ module.exports = {
         oikotie: 'http://tyopaikat.oikotie.fi/?toimiala[104]=104&sijainti[11]=11',
         vierityspalkki: 'http://vierityspalkki.fi/tyopaikat/', // TODO: allow location to be passed somehow
         eilakaisla: 'http://www.eilakaisla.fi/avoimet-tyopaikat?alue=13&haku=IT',
-        duunitori: 'http://duunitori.fi/tyopaikat/?haku=it&alue=jyv%C3%A4skyl%C3%A4'
+        duunitori: 'http://duunitori.fi/tyopaikat/?haku=it&alue=jyv%C3%A4skyl%C3%A4',
+        uranus: 'http://it-ala.uranus.fi/tyopaikat/luettelo'
     }
 };
