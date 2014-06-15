@@ -27,8 +27,11 @@ function scrape(d) {
 
     $('.jobs-box p').each(function(i, e) {
         var $e = $(e);
+        var href = $e.find('a').first().attr('href');
 
-        ret.push(url.resolve(root, $e.find('a').first().attr('href')));
+        if(href) {
+            ret.push(url.resolve(root, href));
+        }
     });
 
     return ret;
