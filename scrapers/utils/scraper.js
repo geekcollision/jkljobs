@@ -12,9 +12,15 @@ module.exports = function(scrape, onResult) {
                 return cb(err);
             }
             var result = scrape(body);
-            result.url = url;
 
-            cb(null, onResult(result, url));
+            if(result) {
+                result.url = url;
+
+                cb(null, onResult(result, url));
+            }
+            else {
+                cb(new Error('Failed to scrape ' + url));
+            }
         });
     };
 };

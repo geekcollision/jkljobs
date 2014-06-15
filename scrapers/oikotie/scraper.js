@@ -9,12 +9,18 @@ module.exports.scrape = scrape;
 
 function scrape(data) {
     var $ = cheerio.load(data);
+
+    // sometimes oikotie might return garbage so skip those cases
+    if(!$('body').length) {
+        return;
+    }
+
     var $additional = $('.job-additional-data');
 
     return {
-        title: $('#jobTitle .n').text() || '',
-        description: $('#jobDescription').text().trim() || '',
-        company: $('#jobTitle .e').text() || '',
+        title: $('#jobTitle .n').text(),
+        description: $('#jobDescription').text().trim(),
+        company: $('#jobTitle .e').text(),
         gid: 'oikotie' + $additional.find('li').first().find('strong').text(),
         contact: '',
         address: '',
