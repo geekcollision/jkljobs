@@ -12,9 +12,9 @@ function scrape(data) {
     var $additional = $('.job-additional-data');
 
     return {
-        title: $('#jobTitle .n').text(),
-        description: $('#jobDescription').text().trim(),
-        company: $('#jobTitle .e').text(),
+        title: $('#jobTitle .n').text() || '',
+        description: $('#jobDescription').text().trim() || '',
+        company: $('#jobTitle .e').text() || '',
         gid: 'oikotie' + $additional.find('li').first().find('strong').text(),
         contact: '',
         address: '',
