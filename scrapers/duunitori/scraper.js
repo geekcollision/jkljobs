@@ -16,7 +16,7 @@ function scrape(data) {
     var $data = $('.jobentry');
     var description = $data.find('*[itemprop="description"]').text();
 
-    // skip if description is too long (it's likely "read more" kind of entry then)
+    // skip if description is too short (it's likely "read more" kind of entry then)
     if(description.length < 300) {
         return;
     }
