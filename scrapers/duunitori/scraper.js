@@ -14,6 +14,12 @@ module.exports.scrape = scrape;
 function scrape(data) {
     var $ = cheerio.load(data);
     var $data = $('.jobentry');
+    var description = $data.find('*[itemprop="description"]').text();
+
+    // skip if description is too long (it's likely "read more" kind of entry then)
+    if(description.length < 300) {
+        return;
+    }
 
     return {
         title: $data.find('h1').text(),
