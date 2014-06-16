@@ -1,8 +1,8 @@
 'use strict';
 
 var async = require('async');
+var levenshtein = require('wuzzy').levenshtein;
 var sugar = require('object-sugar');
-var zip = require('annozip');
 
 var Job = require('../schemas').Job;
 
@@ -22,11 +22,10 @@ module.exports = function(originalJob, cb) {
                 return cb();
             }
 
-            var d1 = trim(description);
-            var d2 = trim(job.description);
-            var sameChars = getSameAmount(d1, d2);
+            var d1 = trim(description).toLowerCase();
+            var d2 = trim(job.description).toLowerCase();
 
-            cb(sameChars / d1.length >= 0.65);
+            cb(levenshtein(d1, d2) >= 0.65);
         }, function(results) {
             cb(null, results);
         });
@@ -43,16 +42,3 @@ module.exports = function(originalJob, cb) {
             replace(/•/g, '');
     }
 };
-
-function getSameAmount(a, b) {
-    var arr = zip(a.split(''), b.split(''));
-    var i, len;
-
-    for(i = 0, len = arr.length; i < len; i++) {
-        if(arr[i][0] !== arr[i][1]) {
-            break;
-        }
-    }
-
-    return i;
-}
