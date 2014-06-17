@@ -487,5 +487,43 @@
     "sources": {
       "duunitori": "http://duunitori.fi/tyopaikat/tyo/java-ee-kehittaja-jatai-testaaja-1306046"
     }
+  },
+  {
+    "gid": "mol84418131",
+    "_id": "lkaWgo1lggo",
+    "created": "2014-06-17T04:46:32.764Z",
+    "title": "Front-end developers",
+    "description": "Experis™ is the global leader in professional resourcing and project based workforce solutions. We attract, assess and place specialist professional talent, connecting the passion of individuals with the ambition of business. At Experis IT we specialize in skilled IT search and solutions and deliver high-demand talent for mission-critical positions to clients in over 50 countries. Experis is part of ManpowerGroup, the world leader in innovative workforce solutions.\r\n\r\nOur global software and service customer company is looking for Front End developers for different projects. \r\n\r\nStarting day, content of the project and duration of the projects varies case by case basis.\r\n\r\nWe are looking for \r\n- HTML5 \r\n- JavaScript or \r\n- Qt knowledge\r\n\r\nLocations\r\n- Helsinki\r\n- Tampere or\r\n- Jyväskylä\r\n\r\nWe are interested in multi-level know-how, from entry level to expert level. \r\n\r\nYou can also offer your service through your own company as a subcontractor.\r\n\r\nInterested? Register your CV in English by pressing button \"Hae-Apply\" on our website www.experis.fi",
+    "company": "Experis",
+    "contact": "Tapani Aittoniemi, tapani.aittoniemi@manpower.fi",
+    "address": "40100 JYVÄSKYLÄ",
+    "experience": "1-5 vuotta",
+    "begins": "sopimuksen mukaan",
+    "type": "kokoaikatyö",
+    "duration": "3 - 6 kk",
+    "added": "2014-04-01T00:00:00+00:00",
+    "sources": {
+      "duunitori": "http://duunitori.fi/tyopaikat/tyo/front-end-developers-1204181",
+      "mol": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8441813"
+    }
+  },
+  {
+    "gid": "mol8441813",
+    "_id": "lkaWgo1lgg",
+    "created": "2014-06-17T04:46:32.764Z",
+    "title": "Back-end developers",
+    "description": "Experis™ is the global leader in professional resourcing and project based workforce solutions. We attract, assess and place specialist professional talent, connecting the passion of individuals with the ambition of business. At Experis IT we specialize in skilled IT search and solutions and deliver high-demand talent for mission-critical positions to clients in over 50 countries. Experis is part of ManpowerGroup, the world leader in innovative workforce solutions.\r\n\r\nOur global software and service customer company is looking for Back End developers for different projects. \r\n\r\nStarting day, content of the project and duration of the projects varies case by case basis.\r\n\r\nWe are looking for \r\n- Java EE \r\n- Spring or \r\n- Liferay developers\r\n\r\nLocations\r\n- Helsinki\r\n- Tampere or\r\n- Jyväskylä\r\n\r\nWe are interested in multi-level know-how, from entry level to expert level. \r\n\r\nYou can also offer your service through your own company as a subcontractor.\r\n\r\nInterested? Register your CV in English by pressing button \"Hae-Apply\" on our website www.experis.fi",
+    "company": "Experis",
+    "contact": "Tapani Aittoniemi, tapani.aittoniemi@manpower.fi",
+    "address": "40100 JYVÄSKYLÄ",
+    "experience": "1-5 vuotta",
+    "begins": "sopimuksen mukaan",
+    "type": "kokoaikatyö",
+    "duration": "3 - 6 kk",
+    "added": "2014-04-01T00:00:00+00:00",
+    "sources": {
+      "duunitori": "http://duunitori.fi/tyopaikat/tyo/front-end-developers-1204181",
+      "mol": "http://www.mol.fi/tyopaikat/tyopaikkatiedotus/kevyt/tiedot.htm?ilmoitusnumero=8441813"
+    }
   }
 ]

@@ -34,6 +34,7 @@ function tests() {
     test1();
     test2();
     test3();
+    testSeparate();
 }
 
 function test1() {
@@ -80,6 +81,22 @@ function test3() {
             }
 
             assert.equal(similar.length, 1);
+        });
+    });
+}
+
+function testSeparate() {
+    sugar.getAll(Job, {gid: 'mol84418131'}, function(err, job) {
+        if(err) {
+            return console.error(err);
+        }
+
+        getSimilar(job[0], function(err, similar) {
+            if(err) {
+                return console.error(err);
+            }
+
+            assert.equal(similar.length, 0);
         });
     });
 }

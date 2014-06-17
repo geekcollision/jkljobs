@@ -22,16 +22,15 @@ module.exports = function(originalJob, cb) {
                 return cb();
             }
 
-            var d1 = trim(description).toLowerCase();
-            var d2 = trim(job.description).toLowerCase();
+            if(clean(originalJob.title) !== clean(job.title)) {
+                return cb();
+            }
 
-            cb(levenshtein(d1, d2) >= 0.65);
-        }, function(results) {
-            cb(null, results);
-        });
+            cb(levenshtein(clean(description), clean(job.description)) >= 0.65);
+        }, cb.bind(null, null));
     });
 
-    function trim(str) {
+    function clean(str) {
         return str.
             replace(/\r/g, '').
             replace(/\n/g, '').
@@ -39,6 +38,7 @@ module.exports = function(originalJob, cb) {
             replace(/–/g, '').
             replace(/ /g, '').
             replace(/\t/g, '').
-            replace(/•/g, '');
+            replace(/•/g, '').
+            toLowerCase();
     }
 };
